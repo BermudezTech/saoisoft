@@ -1,0 +1,46 @@
+.formulario{
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+}
+
+h1{
+	text-align: center;
+}
+
+input{
+	width: 100%;
+}
+
+input[type=file]{
+	padding-bottom: 40px;
+}
+
+span{
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.contenedor{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	background-color: #C6C6C6C4;
+	padding: 20px;
+	box-sizing: border-box;
+	border-radius: 10px;
+}
+
+hr{
+	width: 100%;
+	color: #FF0000;
+}
+
+@media (max-width: 500px){
+	.formulario{
+		width: 100%;
+	}
+	.contenedor{
+		width: 100%;
+	}
+}

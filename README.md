@@ -1,2 +1,2 @@
 # plataforma
-plataforma SAOI-SOFT
+Plataforma SAOI-Soft Co.
