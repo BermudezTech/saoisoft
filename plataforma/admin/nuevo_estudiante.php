@@ -69,28 +69,28 @@ session_start();
 				CONTENIDO
 
 				-->
-				<div class="modal" id="modal">
-					<div class="contenidomodal">
+				<div class="modal7" id="modal7">
+					<div class="contenidomodal7">
 						<div class="close">
-							<button type="button" onclick="cerrar()">X</button>
+							<button type="button" onclick="cerrar7()">X</button>
 						</div>
-						<div class="form">
+						<div class="form7">
 							<h2>Seleccione el curso</h2>
 							<h4>Si el dato no aparece, pruebe a recargar</h4><br>
-							<button type="button" class="recargar" onclick="recargar()">🔄  Recargar datos</button><br><br>
+							<button type="button" class="recargar7" onclick="recargar7()">🔄  Recargar datos</button><br><br>
 							<form>
 								<div class="span">Lista de cursos</div>
 								<br><div class="busqueda">
 									<form>
-										<input type="text" placeholder="Buscar" onkeyup="busqueda()" name="query" id="query">
+										<input type="text" placeholder="Buscar" onkeyup="busqueda7()" name="query7" id="query7">
 										<input type="submit" value="🔎" style="padding: 0; width: 30px;height: 30px;border: 1px solid #B8B8B8;">
 									</form>
 								</div>
 								<form id="demoForm">
-								<div id="datos"></div>
+								<div id="datos7"></div>
 							<button type="button" class="button-submit-red" onclick="nuevo_cursoiframe()">+  Nuevo Curso</button>
 							<iframe src="nuevo_curso.php" id="iframe"></iframe>
-							<button type="button" class="button-submit-green" onclick="modalvalidar()">Seleccionar curso</button>
+							<button type="button" class="button-submit-green" onclick="modalvalidar7()">Seleccionar curso</button>
 							</form>
 						</div>
 						<br><br><br>
@@ -128,7 +128,7 @@ session_start();
 						<label>Coloque el telefono del estudiante</label>
 						<input type="text" name="telefono">
 						<label>Seleccione el curso del estudiante:</label>
-						<button onclick="seleccionar_cursos()" type="button" class="boton2">Seleccionar curso</button><input type="text" name="curso" id="curso"><br>
+						<button onclick="seleccionar_cursos2()" type="button" class="boton2">Seleccionar curso</button><input type="text" name="curso" id="curso"><br>
 						<label>Coloque la foto del estudiante</label>
 						<input type="file" name="foto" id="foto" style="padding-bottom: 30px;">
 						<div id="imagePreview2" style="margin-bottom: 60px; margin-top: 40px;"></div>

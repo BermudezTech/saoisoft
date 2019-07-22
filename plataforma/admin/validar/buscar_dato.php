@@ -236,7 +236,6 @@ switch ($numero) {
 		<th>apellidos</th>
 		<th>email</th>
 		<th>tipo_usuario</th>
-		<th>pass</th>
 		<th>lugar_nacimiento</th>
 		<th>fecha_nacimiento</th>
 		<th>direccion</th>
@@ -258,7 +257,6 @@ switch ($numero) {
 		<td><?php echo $consulta['apellidos'] ?></td>
 		<td><?php echo $consulta['email'] ?></td>
 		<td><?php echo $consulta['tipo_usuario'] ?></td>
-		<td><?php echo $consulta['pass'] ?></td>
 		<td><?php echo $consulta['lugar_nacimiento'] ?></td>
 		<td><?php echo $consulta['fecha_nacimiento'] ?></td>
 		<td><?php echo $consulta['direccion'] ?></td>
@@ -277,7 +275,6 @@ switch ($numero) {
 		<td><?php echo $consulta['apellidos'] ?></td>
 		<td><?php echo $consulta['email'] ?></td>
 		<td><?php echo $consulta['tipo_usuario'] ?></td>
-		<td><?php echo $consulta['pass'] ?></td>
 		<td><?php echo $consulta['lugar_nacimiento'] ?></td>
 		<td><?php echo $consulta['fecha_nacimiento'] ?></td>
 		<td><?php echo $consulta['direccion'] ?></td>

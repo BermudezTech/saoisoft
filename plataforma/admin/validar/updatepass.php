@@ -1,6 +1,12 @@
 <?php 
-
-include 'conexion.php';
+include '../../conexion.php';
+$id = $_REQUEST['id'];
+$pass = $_POST['pass1'];
+$pass = password_hash($pass, PASSWORD_DEFAULT);
+$st = $conexion -> prepare("UPDATE usuario SET pass = '$pass' WHERE id='$id'");
+$st -> execute();
+ ?>
+<?php 
 
 if(isset($conexion)){
 	//echo "No hay problemas";
@@ -18,7 +24,8 @@ $fila = $st -> fetch();
  <head>
  	<meta charset="UTF-8">
  	<title>Inicio</title>
- 	<link rel="stylesheet" href="styles/main.css">
+ 	<link rel="stylesheet" href="../../styles/main.css">
+ 	<link rel="stylesheet" href="../../styles/botones.css">
  	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
  	<link rel="image/x-icon" href="Finallogo.png">
  </head>
@@ -35,7 +42,6 @@ $fila = $st -> fetch();
  </style>
  <body>
  	
- 	<form action="" id="formulario">
  	<div class="contenedor">
  		<div class="span" id="span">Usuario o contraseña incorrectos</div>
  		<div class="header" >
@@ -43,21 +49,19 @@ $fila = $st -> fetch();
  				<img src="data:image/jpg;base64,<?php echo base64_encode($fila['escudo']); ?>">
  				<div class="nombre"><?php echo $fila['nombre']; ?></div>
  			</div>
- 			<div class="login">
- 					<div class="username">Usuario:<input type="text" name="username"></div>
- 					<div class="password">Contraseña:<input type="password" name="password" required="true"></div>
- 					<div class="submitdiv"> <input type="submit" value="Ingresar" id="boton"></div>
- 			</div>
  		</div>
- 		<div class="forget"><a href="recover_pass.php">Olvide mi contraseña</a></div>
  		<div class="main">
- 			<?php echo $fila['main']; ?>
+ 			<div class="form">
+ 				<form action="../index.php">
+ 				<label>Su contraseña ha sido cambiada correctamente</label>
+ 				<input type="submit" value="Regresar" class="button-submit-green">
+ 				</form>
+ 			</div>
  		</div>
  		<div class="footer">
  			
  		</div>
  	</div>
  	</form>
- 	<script src="validar.js"></script>
  </body>
  </html>

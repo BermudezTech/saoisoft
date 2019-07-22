@@ -4,6 +4,7 @@
 				<h4>Yo</h4>
 				<button onclick="perfil()"><i class="icon-profile"></i> Mi perfil</button>
 				<button onclick="mi_info()"><i class="icon-info"></i> Modificar mi informacion</button>
+				<button onclick="changepass()"><i class="icon-key"></i> Cambiar mi contraseña</button>
 				<hr>
 				<h4>Funciones</h4>
 				<button onclick="nuevo_estudiante()"><i class="icon-toga"></i> Nuevo estudiante</button>
@@ -12,6 +13,7 @@
 				<button onclick="materia_curso()"><i class="icon-toga"></i> Asignar materia a curso</button>
 				<button onclick="materia_profesor()"><i class="icon-toga"></i> Asignar materia a profesor</button>
 				<button onclick="nuevo_curso()"><i class="icon-toga"></i> Nuevo curso</button>
+				<button onclick="horario()"><i class="icon-horario"></i> Asignar horario</button>
 				<button onclick="nuevo_padre()"><i class="icon-toga"></i> Nuevo padre/madre de familia</button>
 				<button onclick="nuevo_correo()"><i class="icon-mail"></i> Enviar correos a usuarios</button>
 				<button onclick="ver_dbs()"><i class="icon-dbs"></i> Ver todas las bases de datos</button>

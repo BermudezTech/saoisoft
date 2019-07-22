@@ -92,3 +92,7 @@ function recargar6(){
 function cerrarSesion(){
 	location.href = "../cerrar_sesion.php";
 }
+
+function newactivity(){
+	location.href = "newactivity.php";	
+}

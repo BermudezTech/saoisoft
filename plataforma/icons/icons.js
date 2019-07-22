@@ -36,3 +36,18 @@ var bin = document.getElementsByClassName('icon-bin');
 for (var i = bin.length - 1; i >= 0; i--) {
 	bin[i].innerHTML = "<img src=\"../icons/bin.png\" height=\"14px\">";
 }
+
+var key = document.getElementsByClassName('icon-key');
+for (var i = key.length - 1; i >= 0; i--) {
+	key[i].innerHTML = "<img src=\"../icons/key.png\" height=\"14px\">";
+}
+
+var horario = document.getElementsByClassName('icon-horario');
+for (var i = horario.length - 1; i >= 0; i--) {
+	horario[i].innerHTML = "<img src=\"../icons/horario.png\" height=\"14px\">";
+}
+
+var task = document.getElementsByClassName('icon-task');
+for (var i = task.length - 1; i >= 0; i--) {
+	task[i].innerHTML = "<img src=\"../icons/task.png\" height=\"14px\">";
+}

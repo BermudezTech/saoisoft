@@ -75,8 +75,6 @@ session_start();
 						<input type="text" name="apellidos" value="<?php echo $consulta['apellidos'] ?>">
 						<label>Email:</label>
 						<input type="email" name="email" value="<?php echo $consulta['email'] ?>">
-						<label>Contraseña:</label>
-						<input type="password" name="pass" value="<?php echo $consulta['pass'] ?>">
 						<label>Lugar de nacimiento:</label>
 						<input type="text" name="ln" value="<?php echo $consulta['lugar_nacimiento'] ?>">
 						<label>Fecha de nacimiento:</label>

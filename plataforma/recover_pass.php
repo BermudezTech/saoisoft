@@ -19,6 +19,7 @@ $fila = $st -> fetch();
  	<meta charset="UTF-8">
  	<title>Inicio</title>
  	<link rel="stylesheet" href="styles/main.css">
+ 	<link rel="stylesheet" href="styles/botones.css">
  	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
  	<link rel="image/x-icon" href="Finallogo.png">
  </head>
@@ -35,7 +36,6 @@ $fila = $st -> fetch();
  </style>
  <body>
  	
- 	<form action="" id="formulario">
  	<div class="contenedor">
  		<div class="span" id="span">Usuario o contraseña incorrectos</div>
  		<div class="header" >
@@ -43,21 +43,20 @@ $fila = $st -> fetch();
  				<img src="data:image/jpg;base64,<?php echo base64_encode($fila['escudo']); ?>">
  				<div class="nombre"><?php echo $fila['nombre']; ?></div>
  			</div>
- 			<div class="login">
- 					<div class="username">Usuario:<input type="text" name="username"></div>
- 					<div class="password">Contraseña:<input type="password" name="password" required="true"></div>
- 					<div class="submitdiv"> <input type="submit" value="Ingresar" id="boton"></div>
- 			</div>
  		</div>
- 		<div class="forget"><a href="recover_pass.php">Olvide mi contraseña</a></div>
  		<div class="main">
- 			<?php echo $fila['main']; ?>
+ 			<div class="form">
+ 				<form action="sendrecovermail.php" method="POST">
+ 				<label>Escriba su correo electronico. Sera enviado un link para la recuperacion de su contraseña.</label>
+ 				<input type="email" name="mail">
+ 				<input type="submit" value="Recuperar mi contraseña" class="button-submit-green">
+ 				</form>
+ 			</div>
  		</div>
  		<div class="footer">
  			
  		</div>
  	</div>
  	</form>
- 	<script src="validar.js"></script>
  </body>
  </html>

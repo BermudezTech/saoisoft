@@ -51,11 +51,10 @@ if ($operacion == 1) {
 			$apellidos = $_POST['apellidos'];
 			$email = $_POST['email'];			
 			$tipo_usuario = $_POST['tipo_usuario'];			
-			$pass = $_POST['pass'];
 			$lugar_nacimiento = $_POST['lugar_nacimiento'];
 			$fecha_nacimiento = $_POST['fecha_nacimiento'];
 			$telefono = $_POST['telefono'];
-			$query = "UPDATE usuario SET nombres = '$nombres', apellidos = '$apellidos', email = '$email', tipo_usuario = '$tipo_usuario', pass = '$pass', lugar_nacimiento = '$lugar_nacimiento', fecha_nacimiento = '$fecha_nacimiento', telefono = '$telefono' WHERE id = '$id'";
+			$query = "UPDATE usuario SET nombres = '$nombres', apellidos = '$apellidos', email = '$email', tipo_usuario = '$tipo_usuario', lugar_nacimiento = '$lugar_nacimiento', fecha_nacimiento = '$fecha_nacimiento', telefono = '$telefono' WHERE id = '$id'";
 		break;
 	}
 	$sq = $conexion -> prepare($query);
@@ -159,7 +158,8 @@ if ($operacion == 1) {
 					$sq3 = $conexion -> prepare($query3);
 					$sq3 -> execute();
 				}
-
+				$sq4 = $conexion -> prepare("DELETE FROM relprofesorcursos WHERE profesor='$id'");
+				$sq4 -> execute();
 				$sq2 = $conexion -> prepare("SELECT * FROM relestudiantesalon");
 				$sq2 -> execute();
 				$contador = 0;

@@ -15,8 +15,8 @@ formulario.addEventListener('submit', function(e){
 	var datos = new FormData(formulario);
 
 	console.log(datos)
-	console.log(datos.get('username'))
-	console.log(datos.get('password'))
+	//console.log(datos.get('username'))
+	//console.log(datos.get('password'))
 
 
 	fetch('validar.php',{

@@ -87,27 +87,43 @@ $profesor = $sq2 -> fetch();
 				<div class="actividades">
 					<table>
 					<tr>
-						<th>Id</th>
-						<th>Calificacion</th>
 						<th>Nombre</th>
 						<th>Descripcion</th>
-						<th>Resolver</th>
+						<th>Adjunto</th>
+						<th>Editar</th>
+						<th>Eliminar</th>
+						<th>Calificar</th>
 					</tr>
+					<?php 
+					$id = $_REQUEST['id'];
+					$st = $conexion -> prepare("SELECT * FROM actividades WHERE cursos='$id'");
+					$st -> execute();
+					while ($actividades = $st -> fetch()) {
+					?>
 					<tr>
-						<td>1</td>
-						<td>8</td>
-						<td>Hacer la actividad de la pagina</td>
-						<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque assumenda consequatur consequuntur fugit, dicta id, ab, molestias facilis obcaecati, officia quod vero. Porro eaque, consequatur, delectus adipisci ipsam blanditiis tenetur.</td>
-						<td>Resolver</td>
+						<td><?php echo $actividades['nombre']; ?></td>
+						<td><?php echo $actividades['descripcion']; ?></td>
+						<td><a href="../<?php echo $actividades['adjunto'] ?>">Descargar archivo</a></td>
+						<td class="buttons"><a href="newactivity.php?tipo=4&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/lapiz.png"></a></td>
+						<td class="buttons"><a href="#"><img src="../icons/bin.png"></a></td>
+						<td class="buttons"><a href="#"><img src="../icons/info.png"></a></td>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td>8</td>
-						<td>Hacer la actividad de la pagina</td>
-						<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque assumenda consequatur consequuntur fugit, dicta id, ab, molestias facilis obcaecati, officia quod vero. Porro eaque, consequatur, delectus adipisci ipsam blanditiis tenetur.</td>
-						<td>Resolver</td>
-					</tr>
+					<style>
+						td img{
+							height: 30px;
+						}
+						.buttons{
+							text-align: center;
+						}
+					</style>
+					<?php
+					}
+
+					 ?>
 					</table>
+					<div class="form">
+						<button class="button-submit-green" type="button" style="width: 100%; margin-top: 10px; border: none; padding: 5px; box-sizing: border-box; color: #ffffff; font-weight: bold; cursor: pointer;" onclick="newactivity()">Nueva actividad</button>
+					</div>
 				</div>
 			</div>
 		</div>

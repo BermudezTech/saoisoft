@@ -178,14 +178,14 @@
 	width: 100%;
 }
 
-.form .button-submit-green, .form2 .button-submit-green, .form3 .button-submit-green, .form4 .button-submit-green, .form5 .button-submit-green, .form6 .button-submit-green{
+.form .button-submit-green, .form2 .button-submit-green, .form3 .button-submit-green, .form4 .button-submit-green, .form5 .button-submit-green, .form6 .button-submit-green, .form7 .button-submit-green{
 	background-image: linear-gradient(#19D800,#118F00);
 }
-.form .button-submit-green:hover, .form2 .button-submit-green:hover, .form3 .button-submit-green:hover,.form4 .button-submit-green:hover,.form5 .button-submit-green:hover,.form6 .button-submit-green:hover{
+.form .button-submit-green:hover, .form2 .button-submit-green:hover, .form3 .button-submit-green:hover,.form4 .button-submit-green:hover,.form5 .button-submit-green:hover,.form6 .button-submit-green:hover,.form7 .button-submit-green:hover{
 	background-image: linear-gradient(#14A900,#0B5801);
 }
 
-.modal .button-submit-green,.modal2 .button-submit-green,.modal3 .button-submit-green,.modal4 .button-submit-green,.modal5 .button-submit-green,.modal6 .button-submit-green{
+.modal .button-submit-green,.modal2 .button-submit-green,.modal3 .button-submit-green,.modal4 .button-submit-green,.modal5 .button-submit-green,.modal6 .button-submit-green,.modal7 .button-submit-green{
 	border: none;
 	width: 100%;
 	height: 30px;
@@ -194,14 +194,14 @@
 	cursor: pointer;
 }
 
-.form .button-submit-red, .form2 .button-submit-red, .form3 .button-submit-red,.form4 .button-submit-red,.form5 .button-submit-red,.form6 .button-submit-red{
+.form .button-submit-red, .form2 .button-submit-red, .form3 .button-submit-red,.form4 .button-submit-red,.form5 .button-submit-red,.form6 .button-submit-red,.form7 .button-submit-red{
 	background-image: linear-gradient(#C54444,#B70E0E);
 }
-.form .button-submit-red:hover,.form2 .button-submit-red:hover,.form3 .button-submit-red:hover,.form4 .button-submit-red:hover,.form5 .button-submit-red:hover,.form6 .button-submit-red:hover{
+.form .button-submit-red:hover,.form2 .button-submit-red:hover,.form3 .button-submit-red:hover,.form4 .button-submit-red:hover,.form5 .button-submit-red:hover,.form6 .button-submit-red:hover,.form7 .button-submit-red:hover{
 	background-image: linear-gradient(#AD1A1A,#870505);
 }
 
-.modal .button-submit-red,.modal2 .button-submit-red,.modal3 .button-submit-red,.modal4 .button-submit-red,.modal5 .button-submit-red,.modal6 .button-submit-red{
+.modal .button-submit-red,.modal2 .button-submit-red,.modal3 .button-submit-red,.modal4 .button-submit-red,.modal5 .button-submit-red,.modal6 .button-submit-red,.modal7 .button-submit-red{
 	border: none;
 	width: 100%;
 	height: 30px;
@@ -273,7 +273,7 @@
 	margin-bottom: 10px;
 }
 
-.modal, .modal2, .modal3, .modal4, .modal5, .modal6{
+.modal, .modal2, .modal3, .modal4, .modal5, .modal6, .modal7{
 	position: fixed;
 	background-color: #0009;
 	width: 100%;
@@ -287,7 +287,7 @@
 	display: none;
 }
 
-.contenidomodal, .contenidomodal2, .contenidomodal3, .contenidomodal4,.contenidomodal5, .contenidomodal6{
+.contenidomodal, .contenidomodal2, .contenidomodal3, .contenidomodal4,.contenidomodal5, .contenidomodal6, .contenidomodal7{
 	background-color: #ffffff;
 	width: 90%;
 	height: 90%;
@@ -297,13 +297,13 @@
 	overflow-y: auto;
 }
 
-.close, .close2, .close3, .close4,.close5, .close6{
+.close, .close2, .close3, .close4,.close5, .close6, .close7{
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-end;
 }
 
-.close button, .close2 button, .close3 button, .close4 button,.close5 button, .close6 button{
+.close button, .close2 button, .close3 button, .close4 button,.close5 button, .close6 button, .close7 button{
 	border: none;
 	padding: 5px;
 	background-color: #0F6DCE;
@@ -324,7 +324,7 @@
 	background-image: linear-gradient(#CE3535,#970000);
 }
 
-.modal iframe, .modal2 iframe, .modal3 iframe, .modal4 iframe, .modal5 iframe{
+.modal iframe, .modal2 iframe, .modal3 iframe, .modal4 iframe, .modal5 iframe, .modal7 iframe{
 	width: 100%;
 	height: 570px;
 	display: none;
@@ -332,7 +332,7 @@
 	margin-bottom: 10px;
 }
 
-.modal .recargar, .modal2 .recargar2, .modal3 .recargar3, .modal4 .recargar4, .modal5 .recargar5, .modal6 .recargar6{
+.modal .recargar, .modal2 .recargar2, .modal3 .recargar3, .modal4 .recargar4, .modal5 .recargar5, .modal6 .recargar6, .modal7 .recargar7{
 	border: none;
 	padding: 5px;
 	box-sizing: border-box;

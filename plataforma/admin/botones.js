@@ -46,6 +46,7 @@ function seleccionar_cursos(){
 	$('input[name=query]').focus();
 }
 
+
 function seleccionar_materias(){
 	document.getElementById('modal2').style.display = 'inline-flex';
 	$.ajax({
@@ -106,14 +107,36 @@ function seleccionar_usuario(){
 	$('input[name=query6]').focus();
 }
 
+function seleccionar_cursos2(){
+	document.getElementById('modal7').style.display = 'inline-flex';
+	$.ajax({
+		url: 'validar/mostrar_cursos2.php',
+		success: function(response){
+			document.getElementById('datos7').innerHTML = response;
+
+		}
+	});
+	$('input[name=query]').focus();
+}
+
 function modalvalidar(){
 	document.getElementById('modal').style.display = 'none';
-   	var radioValue = $("input[name='cursoradio']:checked").val();
+	curso = document.getElementsByClassName('curso');
+	console.log(curso.length);
+	cursos = "";
+	value = "";
+	for (var i = curso.length - 1; i >= 0; i--) {
+		console.log(i);
+		if (curso[i].checked == true) {
+			cursos = value + curso[i].value+",";
+		}
+		value = cursos;
+	}
+	cursos = cursos + "fin";
+	console.log(cursos);
+   	//var radioValue = $("input[name='cursoradio']:checked").val();
    	//console.log(document.getElementsByName("cursoradio")[4].checked);
-    if(radioValue){
-    	console.log(radioValue);
-        document.getElementById('curso').value = radioValue;
-    }
+    document.getElementById('curso').value = cursos;
 }
 
 function cerrar(){
@@ -152,13 +175,30 @@ function cerrar3(){
 }
 
 function modalvalidar4(){
-	document.getElementById('modal4').style.display = 'none';
+	/*document.getElementById('modal4').style.display = 'none';
    	var radioValue = $("input[name='cursosradio']:checked").val();
    	//console.log(document.getElementsByName("cursoradio")[4].checked);
     if(radioValue){
     	console.log(radioValue);
         document.getElementById('cursos').value = radioValue;
-    }
+    }*/
+    document.getElementById('modal4').style.display = 'none';
+	curso = document.getElementsByClassName('curso');
+	console.log(curso.length);
+	cursos = "";
+	value = "";
+	for (var i = curso.length - 1; i >= 0; i--) {
+		console.log(i);
+		if (curso[i].checked == true) {
+			cursos = value + curso[i].value+",";
+		}
+		value = cursos;
+	}
+	cursos = cursos + "fin";
+	console.log(cursos);
+   	//var radioValue = $("input[name='cursoradio']:checked").val();
+   	//console.log(document.getElementsByName("cursoradio")[4].checked);
+    document.getElementById('cursos').value = cursos;
 }
 
 function cerrar4(){
@@ -182,18 +222,50 @@ function cerrar5(){
 }
 
 function modalvalidar6(){
-	document.getElementById('modal6').style.display = 'none';
+	/*document.getElementById('modal6').style.display = 'none';
    	var radioValue = $("input[name='usuarioradio']:checked").val();
    	//console.log(document.getElementsByName("cursoradio")[4].checked);
     if(radioValue){
     	console.log(radioValue);
         document.getElementById('usuariog').value = radioValue;
-    }
+    }*/
+    document.getElementById('modal6').style.display = 'none';
+	curso = document.getElementsByClassName('usuarios');
+	console.log(curso.length);
+	cursos = "";
+	value = "";
+	for (var i = curso.length - 1; i >= 0; i--) {
+		console.log(i);
+		if (curso[i].checked == true) {
+			cursos = value + curso[i].value+",";
+		}
+		value = cursos;
+	}
+	cursos = cursos + "fin";
+	console.log(cursos);
+   	//var radioValue = $("input[name='cursoradio']:checked").val();
+   	//console.log(document.getElementsByName("cursoradio")[4].checked);
+    document.getElementById('usuariog').value = cursos;
 }
 
 function cerrar6(){
 	modalvalidar6();
 	document.getElementById('modal6').style.display = 'none';
+}
+
+function modalvalidar7(){
+	document.getElementById('modal7').style.display = 'none';
+   	var radioValue = $("input[name='cursoradio']:checked").val();
+   	//console.log(document.getElementsByName("cursoradio")[4].checked);
+    if(radioValue){
+    	console.log(radioValue);
+        document.getElementById('curso').value = radioValue;
+    }
+}
+
+function cerrar7(){
+	modalvalidar7();
+	document.getElementById('modal7').style.display = 'none';
 }
 
 function nuevo_cursoiframe(){
@@ -269,6 +341,16 @@ function recargar5(){
 function recargar6(){
 	$.ajax({
 		url: 'validar/mostrar_usuarios.php',
+		success: function(response){
+			document.getElementById('datos6').innerHTML = response;
+
+		}
+	});
+}
+
+function recargar7(){
+	$.ajax({
+		url: 'validar/mostrar_cursos2.php',
 		success: function(response){
 			document.getElementById('datos6').innerHTML = response;
 
@@ -439,6 +521,24 @@ function prueba6(usuario){
 	});
 }
 
+function busqueda7(){
+	var busqueda = document.getElementById('query7').value;
+	console.log(busqueda);
+	prueba7(busqueda);
+}
+
+function prueba7(cursos){
+	//console.log('escribio algo...');
+	$.ajax({
+		url: 'validar/buscar_cursos2.php',
+		type: "POST",
+		data: { cursos: cursos},
+		success: function(response){
+			document.getElementById('datos7').innerHTML = response;
+		}
+	});
+}
+
 function nuevo_profesor(){
 	location.href = "nuevo_profesor.php";
 }
@@ -491,4 +591,12 @@ function usuarioperfil(id){
 
 function funciones(){
 	location.href = "funciones.php";
+}
+
+function changepass(){
+	location.href = "changepass.php";
+}
+
+function horario(){
+	location.href = "horario.php";
 }

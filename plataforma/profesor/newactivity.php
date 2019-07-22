@@ -5,6 +5,12 @@ $st = $conexion -> prepare("SELECT * FROM datos_institucion");
 $st -> execute();
 $fila = $st -> fetch();
 session_start();
+if (isset($_REQUEST['tipo'])) {
+	$tipo = $_REQUEST['tipo'];
+}
+if (isset($_REQUEST['actividadid'])) {
+	$actividadid = $_REQUEST['actividadid'];
+}
 //include 'permisos_admin.php';
 
  ?>
@@ -33,7 +39,7 @@ session_start();
 		background-color: <?php echo $fila['color3'] ?>;
 	}
 </style>
-<body>
+<body onload="newtask(<?php echo $tipo; ?>,<?php echo $actividadid; ?>)">
 	<div class="contenedor">
 		<div class="header">
 			<div class="izq">
@@ -57,48 +63,24 @@ session_start();
 				CONTENIDO
 
 				-->
-				<h1>Bienvenido administrador</h1>
-				<h2>Puede realizar las siguientes funciones:</h2>
 				<div class="menufunciones">
-				<div class="span">Mi informacion: </div>
+				<div class="span">Nueva actividad</div>
 				<div class="botonesdiv">
-					<button onclick="perfil()"><img src="../icons/profile.png">Mi perfil</button>
-					<button onclick="mi_info()"><img src="../icons/info.png">Modificar mi informacion</button>
-					<button onclick="changepass()"><img src="../icons/key.png">Cambiar mi contraseña</button>
-				</div>
-				<div class="span">Administrar base de datos</div>
-				<div class="botonesdiv">
-					<button onclick="nuevo_estudiante()"><img src="../icons/toga.png">Nuevo estudiante</button>
-					<button onclick="nuevo_profesor()"><img src="../icons/toga.png">Nuevo profesor</button>
-					<button onclick="nueva_materia()"><img src="../icons/toga.png">Nueva materia</button>
-					<button onclick="materia_curso()"><img src="../icons/toga.png">Asignar materia a curso</button>
-					<button onclick="horario()"><img src="../icons/horario.png">Asignar horario</button>
-				</div>
-				<div class="botonesdiv">
-					<button onclick="nuevo_curso()"><img src="../icons/toga.png">Nuevo curso</button>
-					<button onclick="materia_profesor()"><img src="../icons/toga.png">Asignar materia a profesor</button>
-					<button onclick="nuevo_padre()"><img src="../icons/toga.png">Nuevo padre/madre de familia</button>
-					<button onclick="ver_dbs()"><img src="../icons/dbs.png">Ver todas las bases de datos</button>
-				</div>
-				<div class="span">Otras funciones</div>
-				<div class="botonesdiv">
-					<button onclick="nuevo_correo()"><img src="../icons/mail.png">Enviar correo</button>
-				</div>
-				<div class="span">Configuracion</div>
-				<div class="botonesdiv">
-					<button onclick="modificar_pagina()"><img src="../icons/lapiz.png">Modificar página</button>
-					<button><img src="../icons/setup.png">Opciones de la plataforma</button>
+					<button onclick="newtask(1)"><img src="../icons/profile.png">Examen</button>
+					<button onclick="newtask(2)"><img src="../icons/info.png">Tarea</button>
+					<button onclick="newtask(3)"><img src="../icons/multimedia.png">Multimedia</button>
 				</div>
 				</div>
-				<?php
+				<div id="datos"></div>
+			</div>
+		</div>
+	</div>
+	<?php
 $hex = $fila['color1'];
 list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
 $opacity = 0.5;
 $rgcolor1 = "$r,$g,$b";
 ?>
-			</div>
-		</div>
-	</div>
 <style>
 	.menufunciones{
 		margin-top: 10px;
@@ -131,6 +113,19 @@ $rgcolor1 = "$r,$g,$b";
 		height: 50px;
 	}
 </style>
+<script>
+	function newtask(tipo,actividadid){
+		$.ajax({
+		url: 'validar/new_task.php',
+		type: "POST",
+		data: { tipo: tipo,actividadid:actividadid},
+		success: function(response){
+			document.getElementById('datos').innerHTML = response;
+
+		}
+	});
+	}
+</script>
 <script type="text/javascript" src="botones.js"></script>
 </body>
 </html>

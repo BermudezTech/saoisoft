@@ -7,6 +7,7 @@ $nombres = $_POST['nombres'];
 $apellidos = $_POST['apellidos'];
 $email = $_POST['email'];
 $pass = $_POST['pass'];
+$pass = password_hash($pass, PASSWORD_DEFAULT);
 $lnacimiento = $_POST['lnacimiento'];
 $fnacimiento = $_POST['fnacimiento'];
 $direccion = $_POST['direccion'];

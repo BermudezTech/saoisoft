@@ -60,10 +60,7 @@ session_start();
 				<h2>Diligencie la siguiente informacion para crear un curso:</h2>
 				<div class="span">Informacion curso</div><br><br>
 				<div class="form">
-					<div class="help">Ejemplo: Coloque en id 1101 y en curso "Once A"</div>
 					<form action="validar/nuevo_curso.php" method="POST">
-						<label>Coloque la id del curso:</label>
-						<input type="text" name="id">
 						<label>Coloque el grado:</label>
 						<select name="grado" id="grado" onchange="myFunction()">
 							<option value="0" onclick="grado()">Seleccione el grado</option>

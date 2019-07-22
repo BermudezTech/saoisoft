@@ -61,14 +61,39 @@ session_start();
 				<div class="span">Datos materia</div><br>
 				<div class="form">
 					<form action="validar/nueva_materia.php" method="POST">
-						<label>Coloque el nombre de la materia: </label>
-						<input type="text" name="nombre">
+						<label>Coloque el nombre de la materia/s: </label>
+						<input type="text" name="nombre1" class="materias">
+						<div class="materiasinput" id="materiasinput"></div>
+						<button type="button" class="button-submit-green" onclick="other()" style="width: 95%;">+</button>
+						<input type="text" name="numero" style="width: 30px; border: none;" id="number" value="1">
 						<input type="submit" value="Agregar materia" class="button-submit-green" onclick="materiasubmit()">
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+<style>
+	button[type=button]{
+		width: 100%;
+		height: 30px;
+		border: none;
+		margin-bottom: 10px;
+		cursor: pointer;
+		color: #ffffff;
+		font-weight: bold;
+	}
+</style>
 <script type="text/javascript" src="botones.js"></script>
+<script>
+	function other(){
+		var inputlenght = document.getElementsByClassName('materias').length;
+		var inputnumber = document.getElementById('number');
+		console.log(inputlenght);
+		var contador = inputlenght + 1;
+		inputnumber.value = contador;
+		var divmaterias = document.getElementById('materiasinput');
+		divmaterias.innerHTML += "<input type='text' name='nombre"+contador+"' class='materias'>"
+	}
+</script>
 </body>
 </html>

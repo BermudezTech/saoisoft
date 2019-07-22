@@ -57,17 +57,19 @@ session_start();
 				CONTENIDO
 
 				-->
-				<h1>Bienvenido administrador</h1>
+				<h1>Bienvenido profesor</h1>
 				<h2>Puede realizar las siguientes funciones:</h2>
 				<div class="menufunciones">
 				<div class="span">Mi informacion: </div>
 				<div class="botonesdiv">
 					<button onclick="perfil()"><img src="../icons/profile.png">Mi perfil</button>
 					<button onclick="mi_info()"><img src="../icons/info.png">Modificar mi informacion</button>
+					<button onclick="changepass()"><img src="../icons/key.png">Cambiar mi contraseña</button>
 				</div>
-				<div class="span">Funciones administrador</div>
+				<div class="span">Funciones profesor</div>
 				<div class="botonesdiv">
 					<button onclick="clases()"><img src="../icons/toga.png">Mis Clases</button>
+					<button><img src="../icons/task.png">Asignar actividad</button>
 				</div>
 				<div class="span">Otras funciones</div>
 				<div class="botonesdiv">

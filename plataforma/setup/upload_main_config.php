@@ -23,10 +23,12 @@ $direccion_admin = $_POST['direccion_admin'];
 $telefono_admin = $_POST['telefono_admin'];
 $date_admin = $_POST['date_admin'];
 $cargarFoto = ($_FILES['foto_admin']['tmp_name']);
-
+$pass_admin = password_hash($pass_admin, PASSWORD_DEFAULT);
 $folder = "../usuarios/";
 mkdir($folder);
 $carpeta_destino =$folder."/fotos";
+$carpeta2 = $folder ."/actividades";
+mkdir($carpeta2);
 mkdir($carpeta_destino);
 move_uploaded_file($_FILES['foto_admin']['tmp_name'], $carpeta_destino."/".$id.".jpg");
 $foto_admin = "usuarios/fotos/".$id.".jpg";
