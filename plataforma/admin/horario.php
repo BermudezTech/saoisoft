@@ -123,10 +123,15 @@ if (isset($_REQUEST['curso'])) {
 		var number = document.getElementById('number');
 		number.value = contador;
 		<?php 
+		$contador = 0;
 			$st = $conexion -> prepare("SELECT * FROM horario");
 			$st -> execute();
 			while ($horario = $st -> fetch()) {
 				$id = $horario['id'];
+				$contador = 1;
+			}
+			if ($contador == 0) {
+				$id = 1;
 			}
 			$lastid = $id + 1;
 		 ?>

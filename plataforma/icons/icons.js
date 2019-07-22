@@ -51,3 +51,8 @@ var task = document.getElementsByClassName('icon-task');
 for (var i = task.length - 1; i >= 0; i--) {
 	task[i].innerHTML = "<img src=\"../icons/task.png\" height=\"14px\">";
 }
+
+var manual = document.getElementsByClassName('icon-manual');
+for (var i = manual.length - 1; i >= 0; i--) {
+	manual[i].innerHTML = "<img src=\"../icons/manual.png\" height=\"14px\">";
+}

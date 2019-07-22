@@ -66,9 +66,9 @@ if (isset($_REQUEST['actividadid'])) {
 				<div class="menufunciones">
 				<div class="span">Nueva actividad</div>
 				<div class="botonesdiv">
-					<button onclick="newtask(1)"><img src="../icons/profile.png">Examen</button>
-					<button onclick="newtask(2)"><img src="../icons/info.png">Tarea</button>
-					<button onclick="newtask(3)"><img src="../icons/multimedia.png">Multimedia</button>
+					<button onclick="newtask(1,0)"><img src="../icons/profile.png">Examen</button>
+					<button onclick="newtask(2,0)"><img src="../icons/info.png">Tarea</button>
+					<button onclick="newtask(3,0)"><img src="../icons/multimedia.png">Multimedia</button>
 				</div>
 				</div>
 				<div id="datos"></div>
