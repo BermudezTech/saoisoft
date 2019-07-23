@@ -24,6 +24,9 @@ $extension = end(explode(".", $_FILES['archivo']['name']));
 $carpeta_destino = "../../usuarios/actividades";
 move_uploaded_file($_FILES['archivo']['tmp_name'], $carpeta_destino."/".$contador.".".$extension);
 $archivo = "usuarios/actividades/".$contador.".".$extension;
+if ($extension == "") {
+	$archivo = NULL;
+}
 echo $carpeta_destino."/".$contador.".".$extension;
 
 $st = $conexion -> prepare("INSERT INTO actividades(nombre, descripcion, tipo, adjunto, cursos) VALUES ('$name','$descripcion',$tipo,'$archivo', '$curso')");

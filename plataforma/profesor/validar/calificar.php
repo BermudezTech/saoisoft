@@ -32,15 +32,34 @@ $st -> execute();
 	$st2 = $conexion -> prepare("SELECT * FROM usuario WHERE id = '$usuarioid'");
 	$st2 -> execute();
 	$usuario = $st2 -> fetch();
+	$usuarioap[$contador] = $usuario['apellidos'];
+	$usuarioid[$contador] = $usuario['id'];
+	$contador++;
+}
+sort($usuarioap);
+$num = count($usuarioap);
+for ($i=0; $i < $num; $i++) { 
+	$usuarioape = $usuarioap[$i];
+	$contador = $i+1;
+	$sq = $conexion -> prepare("SELECT * FROM usuario WHERE apellidos='$usuarioape'");
+	$sq -> execute();
+	$usuario = $sq -> fetch();
+	$idusuario = $usuario['id'];
+	$sq2 = $conexion -> prepare("SELECT * FROM relestudiantesalon WHERE estudiante='$idusuario'");
+	$sq2 -> execute();
+	$rel = $sq2 -> fetch();
+	if ($rel['curso'] == $cursos) {
+		# code...    
+	}
 ?>
 <tr>
 	<td><?php echo $contador ?></td>
-	<td><?php echo $usuario['nombres']." ".$usuario['apellidos'] ?></td>
+	<td><?php echo $usuario['apellidos']." ".$usuario['nombres'] ?></td>
 	<td><?php echo $usuario['id'] ?></td>
 	<td><?php echo $salon['nombre'] ?></td>
 	<td><div class="form"><input type="text"></div></td>
 </tr>
 <?php
-$contador++;
-} ?>
+}
+?>
  </table>

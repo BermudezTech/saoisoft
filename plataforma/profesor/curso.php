@@ -121,7 +121,10 @@ $profesor = $sq2 -> fetch();
 					<tr>
 						<td><?php echo $actividades['nombre']; ?></td>
 						<td><?php echo $actividades['descripcion']; ?></td>
-						<td><a href="../<?php echo $actividades['adjunto'] ?>">Descargar archivo</a></td>
+						<td><?php if ($actividades['adjunto'] == NULL) {
+						?>
+						<?php
+						}else{?><a href="../<?php echo $actividades['adjunto'] ?>">Descargar archivo</a><?php } ?></td>
 						<td class="buttons"><a href="newactivity.php?tipo=4&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/lapiz.png"></a></td>
 						<td class="buttons"><a href="newactivity.php?tipo=5&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/bin.png"></a></td>
 						<td class="buttons"><a href="#" onclick="calificar(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)"><img src="../icons/info.png"></a></td>
