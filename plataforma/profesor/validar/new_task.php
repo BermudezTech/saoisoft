@@ -4,7 +4,7 @@ include '../../conexion.php';
 $tipo = $_POST['tipo'];
 session_start();
 $id = $_SESSION['id'];
-$actividadid = $_POST['actividadid'];
+$actividadid = $_REQUEST['actividadid'];
 switch ($tipo) {
 	case 2:
 ?>
@@ -55,7 +55,7 @@ switch ($tipo) {
 ?>
 <div class="form">
 	<div class="span">Nueva tarea</div><br>
-	<form action="validar/newtaskupload.php?tipo=<?php echo $tipo ?>" method="POST" enctype="multipart/form-data">
+	<form action="validar/newtaskupload.php?tipo=<?php echo $tipo ?>&actividadid=<?php echo $actividadid ?>" method="POST" enctype="multipart/form-data">
 		<label>Nombre:</label>
 		<input type="text" name="name" value="<?php echo $actividad['nombre'] ?>">
 		<label>Seleccione el curso:</label>
@@ -89,12 +89,34 @@ switch ($tipo) {
 			echo "checked";
 		} ?>>
 		<label for="chk">Permitir al usuario enviar la actividad por medio de la plataforma</label><br>
+		<?php 
+			if (!isset($_REQUEST['actividadid'])) {
+		?>
 		<label>Adjuntar archivo:</label>
 		<input type="file" style="padding-bottom: 30px;" name="archivo">
+		
+		<?php
+			}
+		 ?>
 		<input type="submit" class="button-submit-green">
 	</form>
 
 </div>
+<?php
+	break;
+	case 5:
+?>
+	<div class="form">
+		<form action="validar/newtaskupload.php?tipo=<?php echo $tipo ?>&actividadid=<?php echo $actividadid ?>" method="POST">
+			<?php 
+				$st = $conexion -> prepare("SELECT * FROM actividades WHERE id='$actividadid'");
+				$st -> execute();
+				$actividad = $st -> fetch();
+			 ?>
+			<h2>Desea eliminar la actividad <?php echo $actividad['nombre'] ?>?</h2>
+			<input type="submit" class="button-submit-green" value="SI">
+		</form>
+	</div>
 <?php
 	break;
 }

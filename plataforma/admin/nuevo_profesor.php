@@ -88,8 +88,8 @@ session_start();
 						<input type="text" name="apellidos">
 						<label>Coloque el email del profesor</label>
 						<input type="text" name="email">
-						<label>Coloque la contraseña del profesor</label><br><br>
-						<div class="chk"><input type="checkbox" id="chk" onclick="passw()"><p>Colocar la misma contraseña que el usuario</p></div>
+						<label>Coloque la contraseña del profesor</label><br>
+						<div class="chk"><input type="checkbox" id="chk" onclick="passw()" style="width: 10px; height: 10px;"><label for="chk">Colocar la misma contraseña que el usuario</label></div>
 						<input type="password" name="pass" id="pass">
 						<label>Coloque el lugar de nacimiento del profesor</label>
 						<input type="text" name="lnacimiento">

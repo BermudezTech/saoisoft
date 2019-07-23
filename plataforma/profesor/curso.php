@@ -1,3 +1,21 @@
+ <div class="modal7" id="modal7" style="display: none;">
+					<div class="contenidomodal7">
+						<div class="close">
+							<button type="button" onclick="cerrarm()">X</button>
+						</div>
+						<h2>Calificar</h2><br><br>
+						<div class="calificar" id="calificar"></div>
+						<style>
+							.calificar{
+								width: 100%;
+								height: 100%;
+							}
+						</style>
+					</div>
+						<br><br><br>
+					</div>
+							
+				</div>
  <?php 
 
 include '../conexion.php';
@@ -105,8 +123,8 @@ $profesor = $sq2 -> fetch();
 						<td><?php echo $actividades['descripcion']; ?></td>
 						<td><a href="../<?php echo $actividades['adjunto'] ?>">Descargar archivo</a></td>
 						<td class="buttons"><a href="newactivity.php?tipo=4&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/lapiz.png"></a></td>
-						<td class="buttons"><a href="#"><img src="../icons/bin.png"></a></td>
-						<td class="buttons"><a href="#"><img src="../icons/info.png"></a></td>
+						<td class="buttons"><a href="newactivity.php?tipo=5&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/bin.png"></a></td>
+						<td class="buttons"><a href="#" onclick="calificar(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)"><img src="../icons/info.png"></a></td>
 					</tr>
 					<style>
 						td img{
@@ -144,5 +162,21 @@ $profesor = $sq2 -> fetch();
 	}
 </style>
 <script type="text/javascript" src="botones.js"></script>
+<script>
+	function calificar(id, curso){
+		$.ajax({
+		url: 'validar/calificar.php',
+		type: "POST",
+		data: { curso: curso, id:id},
+		success: function(response){
+			document.getElementById('calificar').innerHTML = response;
+		}
+	});
+		document.getElementById('modal7').style.display = 'inline-flex';
+	}
+	function cerrarm(){
+		document.getElementById('modal7').style.display = 'none';	
+	}
+</script>
 </body>
 </html>

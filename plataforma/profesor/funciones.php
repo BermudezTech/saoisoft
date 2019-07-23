@@ -69,7 +69,7 @@ session_start();
 				<div class="span">Funciones profesor</div>
 				<div class="botonesdiv">
 					<button onclick="clases()"><img src="../icons/toga.png">Mis Clases</button>
-					<button><img src="../icons/task.png">Asignar actividad</button>
+					<button onclick="newactivity()"><img src="../icons/task.png">Asignar actividad</button>
 				</div>
 				<div class="span">Otras funciones</div>
 				<div class="botonesdiv">

@@ -96,3 +96,7 @@ function cerrarSesion(){
 function newactivity(){
 	location.href = "newactivity.php";	
 }
+
+function changepass(){
+	location.href = "changepass.php";
+}
