@@ -56,3 +56,8 @@ var manual = document.getElementsByClassName('icon-manual');
 for (var i = manual.length - 1; i >= 0; i--) {
 	manual[i].innerHTML = "<img src=\"../icons/manual.png\" height=\"14px\">";
 }
+
+var materia = document.getElementsByClassName('icon-materia');
+for (var i = materia.length - 1; i >= 0; i--) {
+	materia[i].innerHTML = "<img src=\"../icons/materia.png\" height=\"14px\">";
+}

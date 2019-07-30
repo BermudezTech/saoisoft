@@ -17,7 +17,7 @@ CREATE TABLE datos_institucion(id int AUTO_INCREMENT, escudo longblob, nombre va
 CREATE TABLE publicaciones(id int AUTO_INCREMENT, usuario int, publicacion longtext, materia int, date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(id), FOREIGN KEY(usuario) REFERENCES usuario(id), FOREIGN KEY (materia) REFERENCES cursos(id));
 CREATE TABLE horario(id int AUTO_INCREMENT, salon int, hora varchar(255), h int, lunes int, martes int, miercoles int, jueves int, viernes int, PRIMARY KEY(id), FOREIGN KEY(salon) REFERENCES salon(id), FOREIGN KEY(lunes) REFERENCES materias(id), FOREIGN KEY(martes) REFERENCES materias(id), FOREIGN KEY(miercoles) REFERENCES materias(id), FOREIGN KEY(jueves) REFERENCES materias(id), FOREIGN KEY(viernes) REFERENCES materias(id));
 CREATE TABLE actividades(id int AUTO_INCREMENT, nombre varchar(255), descripcion longtext, tipo int, adjunto varchar(255), cursos int,PRIMARY KEY(id), FOREIGN KEY (cursos) REFERENCES cursos(id));
-CREATE TABLE calificaciones(id int AUTO_INCREMENT, estudiante int, curso int, nota int, PRIMARY KEY(id), FOREIGN KEY(estudiante) REFERENCES usuario(id), FOREIGN KEY (curso) REFERENCES cursos(id));
+CREATE TABLE calificaciones(id int AUTO_INCREMENT, estudiante int, curso int, nota int,actividad int, PRIMARY KEY(id), FOREIGN KEY(estudiante) REFERENCES usuario(id), FOREIGN KEY (curso) REFERENCES cursos(id), FOREIGN KEY(actividad) REFERENCES actividades(id));
 ");
 $stm -> execute();
 if ($stm) {

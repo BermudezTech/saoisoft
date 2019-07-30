@@ -127,8 +127,6 @@ session_start();
 							<input type="text" disabled="true" value="<?php echo $id; ?>">
 							<label>Nombre:</label>
 							<input type="text" name="nombre" value="<?php echo $consulta['nombre'] ?>">
-							<label>Descripcion:</label>	
-							<input type="text" name="descripcion" value="<?php echo $consulta['descripcion'] ?>">
 							<label>Correo electronico:</label>
 							<input type="text" name="email" value="<?php echo $consulta['email'] ?>">		
 							<label>Telefono:</label>

@@ -53,7 +53,6 @@ switch ($numero) {
 		<th>color1</th>
 		<th>color2</th>
 		<th>color3</th>
-		<th>descripcion</th>
 		<th>email</th>
 		<th>telefono</th>
 	</tr>
@@ -68,7 +67,6 @@ switch ($numero) {
 		<td><?php echo $consulta['color1'] ?></td>
 		<td><?php echo $consulta['color2'] ?></td>
 		<td><?php echo $consulta['color3'] ?></td>
-		<td><?php echo $consulta['descripcion'] ?></td>
 		<td><?php echo $consulta['email'] ?></td>
 		<td><?php echo $consulta['telefono'] ?></td>
 	</tr>

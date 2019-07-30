@@ -1,6 +1,8 @@
+<form method="POST" action="validar/calificar_usuario.php">
 <?php 
 include '../../conexion.php';
 $id = $_POST['id'];
+$idactividad = $id;
 $curso = $_POST['curso'];
 $query = "SELECT * FROM cursos WHERE id='$curso'";
 $st = $conexion -> prepare($query);
@@ -48,18 +50,27 @@ for ($i=0; $i < $num; $i++) {
 	$sq2 = $conexion -> prepare("SELECT * FROM relestudiantesalon WHERE estudiante='$idusuario'");
 	$sq2 -> execute();
 	$rel = $sq2 -> fetch();
-	if ($rel['curso'] == $cursos) {
-		# code...    
-	}
+	$calificacion = "";
+	$sq3 = $conexion -> prepare("SELECT * FROM calificaciones WHERE estudiante='$idusuario' && actividad='$idactividad'");
+	$sq3 -> execute();
+	$calificacion = $sq3 -> fetch();
+	$calificacion = $calificacion['nota'];
 ?>
 <tr>
+	
 	<td><?php echo $contador ?></td>
 	<td><?php echo $usuario['apellidos']." ".$usuario['nombres'] ?></td>
-	<td><?php echo $usuario['id'] ?></td>
-	<td><?php echo $salon['nombre'] ?></td>
-	<td><div class="form"><input type="text"></div></td>
+	<td><?php echo $usuario['id'] ?><input type="text" name="id<?php echo $contador ?>" value="<?php echo $usuario['id'] ?>" style="display: none;"></td>
+	<td><?php echo $salon['nombre'] ?><input type="text" name="salon<?php echo $contador ?>" value="<?php echo $salon['id'] ?>" style="display: none;"><input type="curso" name="curso" value="<?php echo $curso ?>" style="display: none;"></td>
+	<td><div class="form"><input type="text" name="nota<?php echo $contador ?>" value="<?php echo $calificacion ?>"></div></td>
+	
 </tr>
 <?php
 }
 ?>
  </table>
+ <br><br>
+ <input type="text" name="idactividad" value="<?php echo $idactividad; ?>" style="display: none;">
+ <input type="text" name="contador" value="<?php echo $contador; ?>" style="display: none;">
+ <div class="form"><input type="submit" value="Calificar" class="button-submit-green"></div>
+ </form>
