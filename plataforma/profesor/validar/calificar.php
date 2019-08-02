@@ -21,6 +21,7 @@ $st -> execute();
  		<th>Nombre</th>
  		<th>Id estudiante</th>
  		<th>Curso</th>
+ 		<th>Revisar respuesta</th>
  		<th>Nota</th>
  	</tr>
  <?php 
@@ -62,6 +63,7 @@ for ($i=0; $i < $num; $i++) {
 	<td><?php echo $usuario['apellidos']." ".$usuario['nombres'] ?></td>
 	<td><?php echo $usuario['id'] ?><input type="text" name="id<?php echo $contador ?>" value="<?php echo $usuario['id'] ?>" style="display: none;"></td>
 	<td><?php echo $salon['nombre'] ?><input type="text" name="salon<?php echo $contador ?>" value="<?php echo $salon['id'] ?>" style="display: none;"><input type="curso" name="curso" value="<?php echo $curso ?>" style="display: none;"></td>
+	<td><a href="#" onclick="calificar(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)"><img src="../icons/ojo.png"></a></td>
 	<td><div class="form"><input type="text" name="nota<?php echo $contador ?>" value="<?php echo $calificacion ?>"></div></td>
 	
 </tr>

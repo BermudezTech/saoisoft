@@ -3,7 +3,7 @@
 						<div class="close">
 							<button type="button" onclick="cerrarm()">X</button>
 						</div>
-						<h2>Calificar</h2><br><br>
+						<h2>Responder actividad</h2><br><br>
 						<div class="calificar" id="calificar"></div>
 						<style>
 							.calificar{
@@ -108,9 +108,8 @@ $profesor = $sq2 -> fetch();
 						<th>Nombre</th>
 						<th>Descripcion</th>
 						<th>Adjunto</th>
-						<th>Editar</th>
-						<th>Eliminar</th>
-						<th>Calificar</th>
+						<th>Calificacion</th>
+						<th>Responder</th>
 					</tr>
 					<?php 
 					$id = $_REQUEST['id'];
@@ -125,9 +124,15 @@ $profesor = $sq2 -> fetch();
 						?>
 						<?php
 						}else{?><a href="../<?php echo $actividades['adjunto'] ?>"><img src="../icons/carpeta.png"></a><?php } ?></td>
-						<td class="buttons"><a href="newactivity.php?tipo=4&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/lapiz.png"></a></td>
-						<td class="buttons"><a href="newactivity.php?tipo=5&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/bin.png"></a></td>
-						<td class="buttons"><a href="#" onclick="calificar(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)"><img src="../icons/info.png"></a></td>
+						<td><?php 
+						$estudiante = $_SESSION['id'];
+						$actividad = $actividades['id'];
+						$st3 = $conexion -> prepare("SELECT * FROM calificaciones WHERE estudiante = '$estudiante' AND actividad = '$actividad'");
+						$st3 -> execute();
+						$nota = $st3 -> fetch();
+						echo $nota['nota'];
+						  ?></td>
+						<td class="buttons"><a href="#" onclick="calificar(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)"><img src="../icons/exclamacion.png"></a></td>
 					</tr>
 					<style>
 						td img{
@@ -142,9 +147,6 @@ $profesor = $sq2 -> fetch();
 
 					 ?>
 					</table>
-					<div class="form">
-						<button class="button-submit-green" type="button" style="width: 100%; margin-top: 10px; border: none; padding: 5px; box-sizing: border-box; color: #ffffff; font-weight: bold; cursor: pointer;" onclick="newactivity()">Nueva actividad</button>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -168,7 +170,7 @@ $profesor = $sq2 -> fetch();
 <script>
 	function calificar(id, curso){
 		$.ajax({
-		url: 'validar/calificar.php',
+		url: 'validar/responder.php',
 		type: "POST",
 		data: { curso: curso, id:id},
 		success: function(response){
