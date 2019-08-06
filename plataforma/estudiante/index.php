@@ -77,7 +77,7 @@ if (password_verify($id, $usuario['pass'])) {
 				CONTENIDO
 
 				-->
-				<h3>Bienvenido profesor. Para acceder a sus funciones puede hacer click <a href="funciones.php">aqui</a></h3><br>
+				<h3>Bienvenido estudiante. Para acceder a sus funciones puede hacer click <a href="funciones.php">aqui</a></h3><br>
 				<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 
   <!-- include libraries BS -->
@@ -112,7 +112,13 @@ if (password_verify($id, $usuario['pass'])) {
 	<textarea name="text" class="summernote" id="contents" title="Contents"></textarea>
 	<div class="opciones"><select name="materia"><option value="0">Seleccione la materia</option>
 <?php 
-$sq = $conexion -> prepare("SELECT * FROM cursos");
+$iduser = $_SESSION['id'];
+$sq = $conexion -> prepare("SELECT * FROM relestudiantesalon WHERE estudiante = '$iduser'");
+$sq -> execute();
+$relest = $sq -> fetch();
+$cursoest = $relest['salon'];
+$sql = "SELECT * FROM cursos WHERE salon = '$cursoest'";
+$sq = $conexion -> prepare($sql);
 $sq -> execute();
 while ($cursos = $sq -> fetch()) {
 ?>

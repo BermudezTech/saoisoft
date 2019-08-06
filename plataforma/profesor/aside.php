@@ -8,6 +8,7 @@
 				<hr>
 				<h4>Funciones</h4>
 				<button onclick="clases()"><i class="icon-toga"></i> Mis clases</button>
+				<button onclick="horario()"><i class="icon-horario"></i> Horario</button>
 				<button onclick="nuevo_correo()"><i class="icon-mail"></i> Enviar correo</button>
 				<button onclick="newactivity()"><i class="icon-task"></i> Asignar actividad</button>
 

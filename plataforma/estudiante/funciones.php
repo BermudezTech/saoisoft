@@ -57,7 +57,7 @@ session_start();
 				CONTENIDO
 
 				-->
-				<h1>Bienvenido profesor</h1>
+				<h1>Bienvenido estudiante</h1>
 				<h2>Puede realizar las siguientes funciones:</h2>
 				<div class="menufunciones">
 				<div class="span">Mi informacion: </div>
@@ -66,7 +66,7 @@ session_start();
 					<button onclick="mi_info()"><img src="../icons/info.png">Modificar mi informacion</button>
 					<button onclick="changepass()"><img src="../icons/key.png">Cambiar mi contraseña</button>
 				</div>
-				<div class="span">Funciones profesor</div>
+				<div class="span">Funciones estudiante</div>
 				<div class="botonesdiv">
 					<button onclick="clases()"><img src="../icons/materia.png">Mis Materias</button>
 					<button onclick="newactivity()"><img src="../icons/task.png">Revisar mis tareas</button>
@@ -74,11 +74,7 @@ session_start();
 				<div class="span">Otras funciones</div>
 				<div class="botonesdiv">
 					<button onclick="nuevo_correo()"><img src="../icons/mail.png">Enviar correo</button>
-				</div>
-				<div class="span">Configuracion</div>
-				<div class="botonesdiv">
-					<button onclick="modificar_pagina()"><img src="../icons/lapiz.png">Modificar página</button>
-					<button><img src="../icons/setup.png">Opciones de la plataforma</button>
+					<button onclick="horario()"><img src="../icons/horario.png">Horario</button>
 				</div>
 				</div>
 				<?php

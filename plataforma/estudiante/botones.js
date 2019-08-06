@@ -64,14 +64,32 @@ function prueba6(usuario){
 	});
 }
 
+
 function modalvalidar6(){
-	document.getElementById('modal6').style.display = 'none';
+	/*document.getElementById('modal6').style.display = 'none';
    	var radioValue = $("input[name='usuarioradio']:checked").val();
    	//console.log(document.getElementsByName("cursoradio")[4].checked);
     if(radioValue){
     	console.log(radioValue);
         document.getElementById('usuariog').value = radioValue;
-    }
+    }*/
+    document.getElementById('modal6').style.display = 'none';
+	curso = document.getElementsByClassName('usuarios');
+	console.log(curso.length);
+	cursos = "";
+	value = "";
+	for (var i = curso.length - 1; i >= 0; i--) {
+		console.log(i);
+		if (curso[i].checked == true) {
+			cursos = value + curso[i].value+",";
+		}
+		value = cursos;
+	}
+	cursos = cursos + "fin";
+	console.log(cursos);
+   	//var radioValue = $("input[name='cursoradio']:checked").val();
+   	//console.log(document.getElementsByName("cursoradio")[4].checked);
+    document.getElementById('usuariog').value = cursos;
 }
 
 function cerrar6(){
@@ -99,4 +117,8 @@ function newactivity(){
 
 function changepass(){
 	location.href = "changepass.php";
+}
+
+function horario(){
+	location.href = "horario.php";
 }

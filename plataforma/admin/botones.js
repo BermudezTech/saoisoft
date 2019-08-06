@@ -352,7 +352,7 @@ function recargar7(){
 	$.ajax({
 		url: 'validar/mostrar_cursos2.php',
 		success: function(response){
-			document.getElementById('datos6').innerHTML = response;
+			document.getElementById('datos7').innerHTML = response;
 
 		}
 	});

@@ -74,11 +74,7 @@ session_start();
 				<div class="span">Otras funciones</div>
 				<div class="botonesdiv">
 					<button onclick="nuevo_correo()"><img src="../icons/mail.png">Enviar correo</button>
-				</div>
-				<div class="span">Configuracion</div>
-				<div class="botonesdiv">
-					<button onclick="modificar_pagina()"><img src="../icons/lapiz.png">Modificar página</button>
-					<button><img src="../icons/setup.png">Opciones de la plataforma</button>
+					<button onclick="horario()"><img src="../icons/horario.png">Horario</button>
 				</div>
 				</div>
 				<?php

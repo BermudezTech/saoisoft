@@ -132,7 +132,10 @@ $profesor = $sq2 -> fetch();
 						$nota = $st3 -> fetch();
 						echo $nota['nota'];
 						  ?></td>
-						<td class="buttons"><a href="#" onclick="calificar(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)"><img src="../icons/exclamacion.png"></a></td>
+						<td class="buttons"><?php $tipo = $actividades['tipo'];
+						if ($tipo == 2) {
+						?>
+						<a href="#" onclick="calificar(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)"><img src="../icons/exclamacion.png"></a><?php	} ?></td>
 					</tr>
 					<style>
 						td img{

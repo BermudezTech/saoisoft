@@ -16,7 +16,7 @@ $sq -> execute();
 $resultado = $sq -> fetch();
 $pass = $resultado['pass'];
 $id = $resultado['id'];
-$text = "Usuario $id. Para recuperar su contraseña, por favor de click en el boton o <a href='http://localhost/saoi-soft/plataforma/plataforma/recovernew.php?pass=$pass&usuario=$id'>aqui</a><br><br><a href="."'http://localhost/saoi-soft/plataforma/plataforma/recovernew.php?pass=$pass&usuario=$id'"." style='border:none; width: 200px; height: 30px; padding: 5px; box_sizing: border_box; background-color: #0E74C3; color: #ffffff; font-weight: bold; cursor: pointer; margin-top: 10px; text-decoration: none;'>Recuperar mi contraseña</a>";
+$text = "Usuario $id. Para recuperar su contraseña, por favor de click en el boton o <a href='http://localhost/saoi-soft/plataforma/plataforma/recovernew.php?pass=$pass&usuario=$id'>aqui</a><br><br><a href="."'http://localhost/plataforma/plataforma/recovernew.php?pass=$pass&usuario=$id'"." style='border:none; width: 200px; height: 30px; padding: 5px; box_sizing: border_box; background-color: #0E74C3; color: #ffffff; font-weight: bold; cursor: pointer; margin-top: 10px; text-decoration: none;'>Recuperar mi contraseña</a>";
 $email = "jebermudez587@gmail.com";
 $headers = 'From: ' .$email . "\r\n".
   'MIME-Version: 1.0' . "\r\n" .
