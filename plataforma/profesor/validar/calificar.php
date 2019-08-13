@@ -63,7 +63,7 @@ for ($i=0; $i < $num; $i++) {
 	<td><?php echo $usuario['apellidos']." ".$usuario['nombres'] ?></td>
 	<td><?php echo $usuario['id'] ?><input type="text" name="id<?php echo $contador ?>" value="<?php echo $usuario['id'] ?>" style="display: none;"></td>
 	<td><?php echo $salon['nombre'] ?><input type="text" name="salon<?php echo $contador ?>" value="<?php echo $salon['id'] ?>" style="display: none;"><input type="curso" name="curso" value="<?php echo $curso ?>" style="display: none;"></td>
-	<td><a href="#" onclick="calificar(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)"><img src="../icons/ojo.png"></a></td>
+	<td><a href="#" onclick="revisarenvio(<?php echo $idactividad ?>, <?php echo $curso; ?>,<?php echo $usuario['id'] ?>)"><img src="../icons/ojo.png"></a></td>
 	<td><div class="form"><input type="text" name="nota<?php echo $contador ?>" value="<?php echo $calificacion ?>"></div></td>
 	
 </tr>
@@ -76,3 +76,4 @@ for ($i=0; $i < $num; $i++) {
  <input type="text" name="contador" value="<?php echo $contador; ?>" style="display: none;">
  <div class="form"><input type="submit" value="Calificar" class="button-submit-green"></div>
  </form>
+ 

@@ -78,7 +78,9 @@ session_start();
 					$cursoid = $curso[1];
 					$sq2 = $conexion -> prepare("SELECT * FROM cursos WHERE id ='$cursoid'");
 					$sq2 -> execute();
-					
+					$salon = $sq2 -> fetch();
+					$materia = $salon['materia'];
+					$salon = $salon['salon'];
 					?>
 					<tr>
 						<td></td>

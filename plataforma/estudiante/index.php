@@ -189,7 +189,21 @@ while ($cursos = $sq -> fetch()) {
 </style>
 <?php 
 $id = $_SESSION['id'];
-$sq = $conexion -> prepare("SELECT * FROM publicaciones WHERE usuario='$id' ORDER BY id DESC ");
+$sq = $conexion -> prepare("SELECT * FROM relestudiantesalon WHERE estudiante='$id'");
+$sq -> execute();
+$salon = $sq -> fetch();
+$salon = $salon['salon'];
+$sq2 = $conexion -> prepare("SELECT * FROM cursos WHERE salon='$salon'");
+$sq2 -> execute();
+$contador = 0;
+while($cursos = $sq2 -> fetch()){
+	$curso[$contador] = $cursos['id'];
+	$contador++;
+}
+for ($i=0; $i <$contador ; $i++) { 
+	# code...
+
+$sq = $conexion -> prepare("SELECT * FROM publicaciones WHERE materia='$curso[$i]' ORDER BY id DESC ");
 $sq -> execute();
 while ($publicacion = $sq -> fetch()) {
 	$idpublicador = $publicacion['usuario'];
@@ -234,7 +248,7 @@ while ($colorlike= $color -> fetch()) {
  -->
 <?php
 }
-
+}
  ?>
 
 			</div>

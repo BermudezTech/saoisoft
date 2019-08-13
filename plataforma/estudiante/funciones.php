@@ -110,12 +110,27 @@ $rgcolor1 = "$r,$g,$b";
 		color: #ffffff;
 		font-weight: bold;
 		background-image: linear-gradient(rgba(<?php echo $rgcolor1 ?>,0.8),rgba(<?php echo $rgcolor1 ?>,1));
+		border: 0.5px solid #ffffff;
 	}
 	.botonesdiv button:hover{
 		background-image: linear-gradient(rgba(<?php echo $rgcolor1 ?>,0.5),rgba(<?php echo $rgcolor1 ?>,0.7));
 	}
 	.botonesdiv button img{
 		height: 50px;
+	}
+	@media (max-width: 700px) {
+		.main{
+			padding: 0px;
+		}
+		.botonesdiv button{
+			padding: 1px;
+		}
+		h1,h2{
+			margin-left: 15px;
+		}
+		.botonesdiv button img{
+			height: 40px;
+		}
 	}
 </style>
 <script type="text/javascript" src="botones.js"></script>

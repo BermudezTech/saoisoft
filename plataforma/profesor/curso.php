@@ -177,6 +177,16 @@ $profesor = $sq2 -> fetch();
 	});
 		document.getElementById('modal7').style.display = 'inline-flex';
 	}
+	function revisarenvio(id, curso, estudiante){
+		$.ajax({
+		url: 'validar/revisarenvio.php',
+		type: "POST",
+		data: { id:id, curso: curso,  estudiante:estudiante},
+		success: function(response){
+			document.getElementById('calificar').innerHTML = response;
+		}
+	});
+	}
 	function cerrarm(){
 		document.getElementById('modal7').style.display = 'none';	
 	}
