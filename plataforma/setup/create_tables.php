@@ -6,7 +6,7 @@ $stm = $conexion->prepare("
 USE saoisoft;
 CREATE TABLE tipo_usuario(id int, nombre varchar(255), PRIMARY KEY(id));
 CREATE TABLE usuario(id int, nombres varchar(255), apellidos varchar(255), email varchar(255),tipo_usuario int, pass varchar(255),lugar_nacimiento varchar(255),fecha_nacimiento varchar(255),direccion varchar(255),telefono varchar(255),foto varchar(255),tipo_documento varchar(255),PRIMARY KEY(id), FOREIGN KEY(tipo_usuario) REFERENCES tipo_usuario(id));
-CREATE TABLE relestudiantepadre(id int, estudiante int, padre int, madre int, PRIMARY KEY(id), FOREIGN KEY(estudiante) REFERENCES usuario(id), FOREIGN KEY(padre) REFERENCES usuario(id), FOREIGN KEY(madre) REFERENCES usuario(id));
+CREATE TABLE relestudiantepadre(id int AUTO_INCREMENT, estudiante int, padre int, madre int, PRIMARY KEY(id), FOREIGN KEY(estudiante) REFERENCES usuario(id), FOREIGN KEY(padre) REFERENCES usuario(id), FOREIGN KEY(madre) REFERENCES usuario(id));
 CREATE TABLE grado(id int, nombre varchar(255), PRIMARY KEY(id));
 CREATE TABLE salon(id int AUTO_INCREMENT, nombre varchar(255),grado int, PRIMARY KEY(id), FOREIGN KEY(grado) REFERENCES grado(id));
 CREATE TABLE materias(id int AUTO_INCREMENT, nombre varchar(255), PRIMARY KEY(id));

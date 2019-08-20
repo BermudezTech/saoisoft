@@ -65,7 +65,7 @@ session_start();
 					<button onclick="perfil()"><img src="../icons/profile.png">Mi perfil</button>
 					<button onclick="mi_info()"><img src="../icons/info.png">Modificar mi informacion</button>
 					<button onclick="changepass()"><img src="../icons/key.png">Cambiar mi contraseña</button>
-					<button><img src="../icons/manual.png">Manual de usuario</button>
+					<!--<button><img src="../icons/manual.png">Manual de usuario</button>-->
 				</div>
 				<div class="span">Administrar base de datos</div>
 				<div class="botonesdiv">

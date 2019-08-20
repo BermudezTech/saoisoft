@@ -74,7 +74,7 @@ session_start();
 				<div class="span">Otras funciones</div>
 				<div class="botonesdiv">
 					<button onclick="nuevo_correo()"><img src="../icons/mail.png">Enviar correo</button>
-					<button onclick="horario()"><img src="../icons/horario.png">Horario</button>
+					<!--<button onclick="horario()"><img src="../icons/horario.png">Horario</button>-->
 				</div>
 				</div>
 				<?php

@@ -122,3 +122,28 @@ function changepass(){
 function horario(){
 	location.href = "horario.php";
 }
+
+function querysearchbar(){
+	var busqueda = document.getElementById('querysearchbar').value;
+	console.log(busqueda);
+	querysearchbarq(busqueda);
+}
+
+function querysearchbarq(dato){
+	//console.log('escribio algo...');
+	$.ajax({
+		url: 'validar/buscar_todo.php',
+		type: "POST",
+		data: { dato: dato},
+		success: function(response){
+			document.getElementById('querysearchbardiv').innerHTML = response;
+		}
+	});
+}
+
+function usuarioperfil(id){
+	location.href = "user_profile.php" + "?id=" + id;
+}
+function cursopublicacion(id){
+	location.href = "publicaciones_curso.php?id=" + id;
+}

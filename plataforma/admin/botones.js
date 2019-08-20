@@ -600,3 +600,7 @@ function changepass(){
 function horario(){
 	location.href = "horario.php";
 }
+
+function cursopublicacion(id){
+	location.href = "publicaciones_curso.php?id=" + id;
+}

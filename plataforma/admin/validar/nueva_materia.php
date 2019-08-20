@@ -12,7 +12,7 @@ if ($nombre == "") {
 $st = $conexion -> prepare("INSERT INTO materias (nombre) VALUES ('$nombre')");
 $st -> execute();
 }
-header('Location: ../');
+header('Location: ../nueva_materia.php');
 
 }
 

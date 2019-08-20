@@ -16,6 +16,10 @@
 	height: 42px;
 }
 
+.oculto{
+	display: none;
+}
+
 .busqueda{
 	width: 100%;
 	display: flex;

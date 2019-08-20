@@ -97,7 +97,7 @@ while ($cursos = $sq -> fetch()) {
 	}
 	.hora-fecha{
 		color: #B3B3B3;
-		width: 70%;
+		width: 20%;
 		font-size: 14px;
 	}
 </style>

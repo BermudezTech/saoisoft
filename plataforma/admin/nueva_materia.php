@@ -64,8 +64,8 @@ session_start();
 						<label>Coloque el nombre de la materia/s: </label>
 						<input type="text" name="nombre1" class="materias">
 						<div class="materiasinput" id="materiasinput"></div>
-						<button type="button" class="button-submit-green" onclick="other()" style="width: 95%;">+</button>
-						<input type="text" name="numero" style="width: 30px; border: none;" id="number" value="1">
+						<!--<button type="button" class="button-submit-green" onclick="other()" style="width: 100%;">+</button>-->
+						<input type="text" name="numero" style="width: 30px; border: none; display: none;" id="number" value="1">
 						<input type="submit" value="Agregar materia" class="button-submit-green" onclick="materiasubmit()">
 					</form>
 				</div>
