@@ -24,7 +24,7 @@ $st3 = $conexion -> prepare("SELECT * FROM cursos WHERE id = '$curso'");
 $st3 -> execute();
 $curso = $st3 -> fetch();
  ?>
-
+<form method="POST" action="validar/calificacion_individual.php">
  <h2><?php echo $actividad['nombre']; ?></h2>
  <h3>Estudiante: <?php echo $estudiante['nombres']." ".$estudiante['apellidos']; ?></h3>
  <div class="oculto">
@@ -35,11 +35,26 @@ $curso = $st3 -> fetch();
  <h3>Curso: <?php echo $curso['nombre']; ?></h3><br><br>
 
  <h4>Ver envio:</h4>
- <textarea disabled="true" style="resize: none; width: 100%; height: 50%;"></textarea><br><br>
- <h4>Archivo adjunto: <a href="">Descargar</a></h4><br><br>
+ <?php 
+$estudianteid = $estudiante['id'];
+$st5 = $conexion -> prepare("SELECT * FROM resp_actividad WHERE estudiante='$estudianteid' && actividades='$actividadid'");
+$st5 -> execute();
+$resp_actividad = $st5 -> fetch();
+if ($resp_actividad['texto']!='') {
+?>
+
+ <textarea disabled="true" style="resize: none; width: 100%; height: 50%; padding: 10px; box-sizing: border-box;"><?php echo $resp_actividad['texto'] ?></textarea><br><br>
+ <h4>Archivo adjunto: <?php if ($resp_actividad['url'] == '') {
+ 	echo "No se adjunto archivo<br><br>";
+ }else{ ?><a href="../<?php echo $resp_actividad['url'] ?>">Descargar</a></h4><br><br>
+<?php 
+}
+}else{
+	echo "<br><h2>El estudiante no ha enviado actividad<h2><br>";
+}
+  ?>
 
 
 
-
- <h3>Calificacion: </h3><form method="POST" action="validar/calificacion_individual.php"><div class="form"><input type="text" name="nota<?php echo $contador ?>" value="<?php echo $calificacion ?>"></div>
+ <h3>Calificacion: </h3><div class="form"><input type="text" name="nota" value="<?php echo $calificacion ?>"></div>
  <div class="form"><input type="submit" value="Calificar" class="button-submit-green"></div></form>

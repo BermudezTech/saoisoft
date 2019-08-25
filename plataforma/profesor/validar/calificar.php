@@ -56,6 +56,9 @@ for ($i=0; $i < $num; $i++) {
 	$sq3 -> execute();
 	$calificacion = $sq3 -> fetch();
 	$calificacion = $calificacion['nota'];
+	$sq4 = $conexion -> prepare("SELECT * FROM actividades WHERE id='$idactividad'");
+	$sq4 -> execute();
+	$actividad = $sq4 -> fetch();
 ?>
 <tr>
 	
@@ -63,7 +66,9 @@ for ($i=0; $i < $num; $i++) {
 	<td><?php echo $usuario['apellidos']." ".$usuario['nombres'] ?></td>
 	<td><?php echo $usuario['id'] ?><input type="text" name="id<?php echo $contador ?>" value="<?php echo $usuario['id'] ?>" style="display: none;"></td>
 	<td><?php echo $salon['nombre'] ?><input type="text" name="salon<?php echo $contador ?>" value="<?php echo $salon['id'] ?>" style="display: none;"><input type="curso" name="curso" value="<?php echo $curso ?>" style="display: none;"></td>
-	<td><a href="#" onclick="revisarenvio(<?php echo $idactividad ?>, <?php echo $curso; ?>,<?php echo $usuario['id'] ?>)"><img src="../icons/ojo.png"></a></td>
+	<td><?php if ($actividad['tipo']==1) {
+	?><a href="#" onclick="revisarenvio(<?php echo $idactividad ?>, <?php echo $curso; ?>,<?php echo $usuario['id'] ?>)"><img src="../icons/ojo.png"></a><?php
+	} ?></td>
 	<td><div class="form"><input type="text" name="nota<?php echo $contador ?>" value="<?php echo $calificacion ?>"></div></td>
 	
 </tr>

@@ -66,10 +66,11 @@ session_start();
 					</tr>
 					<?php 
 						$id = $_SESSION['id'];
-						$sq = $conexion -> prepare("SELECT * FROM relestudiantesalon WHERE estudiante='$id'");
+						$sql1 = "SELECT * FROM relestudiantesalon WHERE estudiante='$id'";
+						$sq = $conexion -> prepare($sql1);
 						$sq -> execute();
 						$salon = $sq -> fetch();
-						$salon = $salon['id'];
+						$salon = $salon['salon'];
 						$sq2 = $conexion -> prepare("SELECT * FROM cursos WHERE salon='$salon'");
 						$sq2 -> execute();
 						while($curso = $sq2 -> fetch()){

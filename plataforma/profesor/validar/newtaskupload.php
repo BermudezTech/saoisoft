@@ -5,6 +5,7 @@ $curso = $_POST['curso'];
 $descripcion = $_POST['descripcion'];
 $actividadid = $_REQUEST['actividadid'];
 $tipo = $_REQUEST['tipo'];
+$date = $_POST['date'];
 switch ($tipo) {
 	case 2:
 if (isset($_POST['chk'])) {
@@ -12,10 +13,10 @@ if (isset($_POST['chk'])) {
 }else{
 	$tipo = 2;
 }
-$contador = 1;
 $st = $conexion -> prepare("SELECT * FROM actividades");
 $st -> execute();
 while ($actividades = $st -> fetch()) {
+	$contador = $actividades['id'];
 	$contador++;
 }
 echo $contador;
@@ -29,7 +30,7 @@ if ($extension == "") {
 }
 echo $carpeta_destino."/".$contador.".".$extension;
 
-$st = $conexion -> prepare("INSERT INTO actividades(nombre, descripcion, tipo, adjunto, cursos) VALUES ('$name','$descripcion',$tipo,'$archivo', '$curso')");
+$st = $conexion -> prepare("INSERT INTO actividades(nombre, descripcion, tipo, adjunto, cursos, fecha_fin) VALUES ('$name','$descripcion',$tipo,'$archivo', '$curso','$date')");
 $st -> execute();
 	break;
 	case 4:
@@ -38,7 +39,7 @@ if (isset($_POST['chk'])) {
 }else{
 	$tipo = 2;
 }
-$query = "UPDATE actividades SET nombre='$name', descripcion='$descripcion', tipo = '$tipo', cursos = '$curso' WHERE id='$actividadid'";
+$query = "UPDATE actividades SET nombre='$name', descripcion='$descripcion', tipo = '$tipo', cursos = '$curso', fecha_fin='$date' WHERE id='$actividadid'";
 $st = $conexion -> prepare($query);
 $st -> execute();
 echo $query;
@@ -50,6 +51,9 @@ $st -> execute();
 $curso = $st -> fetch();
 $curso = $curso['cursos'];
 echo $curso."hello";
+$query = "DELETE FROM resp_actividad WHERE actividades='$actividadid'";
+$st = $conexion -> prepare($query);
+$st -> execute();
 $query = "DELETE FROM calificaciones WHERE actividad='$actividadid'";
 $st = $conexion -> prepare($query);
 $st -> execute();

@@ -40,6 +40,8 @@ switch ($tipo) {
 		<label>Envio de tarea</label><br><br>
 		<input type="checkbox" name="chk" id="chk" style="width: 10px; height: 10px;">
 		<label for="chk">Permitir al usuario enviar la actividad por medio de la plataforma</label><br>
+		<label>Fecha de finalizacion</label>
+		<input type="date" name="date">
 		<label>Adjuntar archivo:</label>
 		<input type="file" style="padding-bottom: 30px;" name="archivo">
 		<input type="submit" class="button-submit-green">
@@ -89,6 +91,8 @@ switch ($tipo) {
 			echo "checked";
 		} ?>>
 		<label for="chk">Permitir al usuario enviar la actividad por medio de la plataforma</label><br>
+		<label>Fecha de finalizacion</label>
+		<input type="date" name="date" value="<?php echo $actividad['fecha_fin'] ?>">
 		<?php 
 			if (!isset($_REQUEST['actividadid'])) {
 		?>
