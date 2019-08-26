@@ -22,8 +22,8 @@ if (password_verify($id, $usuario['pass'])) {
 							<script>
 								$('#myframe').contents().find("body")
    								.append($("<style type='text/css'>  .header{display:none;}  </style>"));
-   								$('#myframe').contents().find("div")
-   								.append($("<style type='text/css'>  .aside{display:none;}  </style>"));
+   								/*$('#myframe').contents().find("div") 
+   								.append($("<style type='text/css'>  .aside{display:none;}  </style>"));*/
 							</script>
 						</div>
 					</div>

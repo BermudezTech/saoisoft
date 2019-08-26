@@ -86,7 +86,7 @@ session_start();
 						$sq5 = $conexion -> prepare("SELECT * FROM usuario WHERE id='$profesor'");
 						$sq5 -> execute();
 						$profesor = $sq5 -> fetch();
-						$profesor = $profesor['apellidos'] . " " . $profesor['nombres'];
+						$profesor = $profesor['nombres'] . " " . $profesor['apellidos'];
 					?>
 					<tr class="fila" onclick="curso(<?php echo $curso['id']; ?>)">
 						<td><?php echo $curso['nombre'] ?></td>

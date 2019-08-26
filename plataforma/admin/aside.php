@@ -21,6 +21,6 @@
 				<hr>
 				<h4>Pagina principal</h4>
 				<button onclick="modificar_pagina()"><i class="icon-lapiz"></i> Modificar pagina</button>
-				<button><i class="icon-setup"></i> Opciones de la plataforma</button>
+				<!--<button><i class="icon-setup"></i> Opciones de la plataforma</button>-->
 
 <script type="text/javascript" src="../icons/icons.js"></script>
