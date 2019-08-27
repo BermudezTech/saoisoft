@@ -1,10 +1,9 @@
 <?php 
 
-session_start();
-if ($_SESSION['tipo_usuario'] == 0) {
+if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 0) {
 	//echo "Eres administrador, tienes permiso para entrar a esta pagina...";
 }else{
-	echo "No eres administrador, no tienes permiso de entrar a esta pagina";
+	echo "<h1>No tiene permiso de entrar a esta pagina.</h1><h4>Si aun no a ingresado de click <a href='../'>aqui</a><br>Si usted no es administrador, no puede acceder a esta pagina<br>Si usted es administrador y no puede ver el contenido, porfavor contactese con el administrador del portal o intente borrar el cache de su navegador</h4>";
 	die();
 }
 

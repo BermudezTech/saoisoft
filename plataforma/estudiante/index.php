@@ -1,10 +1,10 @@
 <?php 
-
+session_start();
+include 'permisos_estudiante.php';
 include '../conexion.php';
 $st = $conexion -> prepare("SELECT * FROM datos_institucion");
 $st -> execute();
 $fila = $st -> fetch();
-session_start();
 //include 'permisos_admin.php';
 $id = $_SESSION['id'];
 $st2 = $conexion -> prepare("SELECT * FROM usuario WHERE id='$id'");
@@ -21,9 +21,8 @@ if (password_verify($id, $usuario['pass'])) {
 							<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 							<script>
 								$('#myframe').contents().find("body")
-   								.append($("<style type='text/css'>  .header{display:none;}  </style>"));
-   								$('#myframe').contents().find("div")
-   								.append($("<style type='text/css'>  .aside{display:none;}  </style>"));
+ 	.append($("<style type='text/css'>  .header,.aside{display:none;}  </style>"));
+   		
 							</script>
 						</div>
 					</div>

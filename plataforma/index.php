@@ -1,7 +1,12 @@
 <?php 
 
 include 'conexion.php';
-
+session_start();
+if (isset($_SESSION['tipo_usuario'])) {
+	header('location: select_user.php');
+}else{
+	session_destroy();
+}
 if(isset($conexion)){
 	//echo "No hay problemas";
 }else{

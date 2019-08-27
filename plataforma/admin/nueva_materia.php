@@ -1,11 +1,10 @@
 <?php 
-
+session_start();
+include 'permisos_admin.php';
 include '../conexion.php';
 $st = $conexion -> prepare("SELECT * FROM datos_institucion");
 $st -> execute();
 $fila = $st -> fetch();
-session_start();
-//include 'permisos_admin.php';
 
  ?>
 <!DOCTYPE html>

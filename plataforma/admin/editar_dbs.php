@@ -1,5 +1,6 @@
 <?php 
-
+session_start();
+include 'permisos_admin.php';
 $radio = $_REQUEST['radio'];
 $id = $_REQUEST['id'];
 $operacion = $_REQUEST['operacion'];
