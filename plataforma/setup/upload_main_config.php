@@ -29,6 +29,8 @@ mkdir($folder);
 $carpeta_destino =$folder."/fotos";
 $carpeta2 = $folder ."/actividades";
 mkdir($carpeta2);
+$carpeta3 = $folder ."/multimedia";
+mkdir($carpeta3);
 mkdir($carpeta_destino);
 move_uploaded_file($_FILES['foto_admin']['tmp_name'], $carpeta_destino."/".$id.".jpg");
 $foto_admin = "usuarios/fotos/".$id.".jpg";

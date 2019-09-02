@@ -44,6 +44,31 @@ $st = $conexion -> prepare($query);
 $st -> execute();
 echo $query;
 	break;
+	case 3:
+$titulo = $_POST['titulo'];
+$extension = end(explode(".", $_FILES['archivo']['name']));
+if ($extension != '') {
+
+$st = $conexion -> prepare("SELECT * FROM multimedia");
+$st -> execute();
+while ($actividades = $st -> fetch()) {
+	$contador = $actividades['id'];
+	$contador++;
+}
+	
+$carpeta_destino = "../../usuarios/multimedia";
+move_uploaded_file($_FILES['archivo']['tmp_name'], $carpeta_destino."/".$contador.".".$extension);
+$url = "usuarios/multimedia/".$contador.".".$extension;
+}else{
+	echo "No se ha subido ningun archivo";
+	$url = $_POST['url'];
+	echo $url;
+}
+$sql = "INSERT INTO multimedia(titulo,url, curso) VALUES ('$titulo','$url',$curso)";
+$st = $conexion -> prepare($sql);
+$st -> execute();
+echo "<br>".$sql;
+	break;
 	case 5:
 echo $actividadid;
 $st = $conexion -> prepare("SELECT * FROM actividades WHERE id='$actividadid'");
@@ -61,6 +86,15 @@ $query = "DELETE FROM actividades WHERE id='$actividadid'";
 $st = $conexion -> prepare($query);
 $st -> execute();
 echo $query;
+	break;
+	case 6:
+$st = $conexion -> prepare("SELECT * FROM multimedia WHERE id='$actividadid'");
+$st -> execute();
+$curso = $st -> fetch();
+$curso = $curso['curso'];
+$query = "DELETE FROM multimedia WHERE id='$actividadid'";
+$st = $conexion -> prepare($query);
+$st -> execute();
 	break;
 }
 $Location = 'Location: ../curso.php?id='.$curso;

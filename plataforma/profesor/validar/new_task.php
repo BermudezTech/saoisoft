@@ -50,6 +50,43 @@ switch ($tipo) {
 </div>
 <?php
 	break;
+	case 3:
+?>
+<form action="validar/newtaskupload.php?tipo=<?php echo $tipo ?>&actividadid=<?php echo $actividadid ?>" method="POST" enctype="multipart/form-data">
+	<div class="span">Elemento multimedia</div>
+	<h2>Subir nuevo elemento multimedia</h2>
+	<p class="help">Puede subir un archivo desde diferentes tipos de multimedia especificados aqui: Imagen, Video, Audio, Archivo Flash, Youtube, Vimeo, Facebook Video y URL video en formato mp4.</p>
+	<br><br><label>Titulo: </label>
+	<div class="form"><input type="text" name="titulo"></div>
+	<label>Seleccione el curso:</label>
+		<div class="form"><select name="curso"><option value="0">Seleccionar curso</option>
+<?php 
+		$st = $conexion -> prepare("SELECT * FROM relprofesorcursos WHERE profesor = '$id'");
+		$st -> execute();
+		$i = 1;
+		while ($rel = $st -> fetch()) {
+			$cursos[$i] = $rel['cursos'];
+			$i++;
+		}
+		$num = count($cursos);
+		for ($i=1; $i <= $num; $i++) { 
+			$idc = $cursos[$i];
+			$st2 = $conexion -> prepare("SELECT * FROM cursos WHERE id='$idc'");
+			$st2 -> execute();
+			$curso = $st2 -> fetch();
+		?>
+		<option value="<?php echo $curso['id'] ?>"><?php echo $curso['nombre']; ?></option>
+		<?php
+		}
+		 ?>
+		</select></div>
+	<label>URL: </label>
+	<div class="form"><input type="text" name="url"></div>
+	<label>Archivo: </label>
+	<div class="form"><input type="file" style="padding-bottom: 30px;" name="archivo"><input type="submit" class="button-submit-green"></div>
+	</form>
+<?php
+	break;
 	case 4:
 	$sq = $conexion -> prepare("SELECT * FROM actividades WHERE id='$actividadid'");
 	$sq -> execute();
@@ -118,6 +155,23 @@ switch ($tipo) {
 				$actividad = $st -> fetch();
 			 ?>
 			<h2>Desea eliminar la actividad <?php echo $actividad['nombre'] ?>?</h2>
+			<input type="submit" class="button-submit-green" value="SI">
+		</form>
+	</div>
+<?php
+	break;
+	case 6:
+	
+?>
+
+	<div class="form">
+		<form action="validar/newtaskupload.php?tipo=<?php echo $tipo ?>&actividadid=<?php echo $actividadid; ?>" method="POST">
+			<?php 
+				$st = $conexion -> prepare("SELECT * FROM multimedia WHERE id='$actividadid'");
+				$st -> execute();
+				$actividad = $st -> fetch();
+			 ?>
+			<h2>Desea eliminar la multimedia <?php echo $actividad['titulo'] ?>?</h2>
 			<input type="submit" class="button-submit-green" value="SI">
 		</form>
 	</div>

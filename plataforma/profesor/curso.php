@@ -145,6 +145,43 @@ $profesor = $sq2 -> fetch();
 					<div class="form">
 						<button class="button-submit-green" type="button" style="width: 100%; margin-top: 10px; border: none; padding: 5px; box-sizing: border-box; color: #ffffff; font-weight: bold; cursor: pointer;" onclick="newactivity()">Nueva actividad</button>
 					</div>
+
+				</div>
+				<br><div class="span">Multimedia</div><br>
+				<div class="actividades">
+					<table>
+					<tr>
+						<th>Nombre</th>
+						<th>Abrir multimedia</th>
+						<th>Eliminar</th>
+					</tr>
+					<?php 
+					$id = $_REQUEST['id'];
+					$st = $conexion -> prepare("SELECT * FROM multimedia WHERE curso='$id'");
+					$st -> execute();
+					while ($actividades = $st -> fetch()) {
+					?>
+					<tr>
+						<td><?php echo $actividades['titulo']; $url = $actividades['url'];?></td>
+						<td><a href="abrir_multimedia.php?url=<?php echo $url ?>"><img src="../icons/multimedia.png"></a></td>
+						<td class="buttons"><a href="newactivity.php?tipo=6&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/bin.png"></a></td>
+					</tr>
+					<style>
+						td img{
+							height: 30px;
+						}
+						.buttons{
+							text-align: center;
+						}
+					</style>
+					<?php
+					}
+
+					 ?>
+					</table>
+					<div class="form">
+						<button class="button-submit-green" type="button" style="width: 100%; margin-top: 10px; border: none; padding: 5px; box-sizing: border-box; color: #ffffff; font-weight: bold; cursor: pointer;" onclick="location.href='newactivity.php?tipo=3&actividadid=1'">Nueva multimedia</button>
+					</div>
 				</div>
 			</div>
 		</div>

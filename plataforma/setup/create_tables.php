@@ -19,6 +19,7 @@ CREATE TABLE horario(id int AUTO_INCREMENT, salon int, hora varchar(255), h int,
 CREATE TABLE actividades(id int AUTO_INCREMENT, nombre varchar(255), descripcion longtext, tipo int, adjunto varchar(255), cursos int, fecha_fin DATE NOT NULL,PRIMARY KEY(id), FOREIGN KEY (cursos) REFERENCES cursos(id));
 CREATE TABLE calificaciones(id int AUTO_INCREMENT, estudiante int, curso int, nota int,actividad int, PRIMARY KEY(id), FOREIGN KEY(estudiante) REFERENCES usuario(id), FOREIGN KEY (curso) REFERENCES cursos(id), FOREIGN KEY(actividad) REFERENCES actividades(id));
 CREATE TABLE resp_actividad(id int AUTO_INCREMENT, actividades int, estudiante int, url varchar(255), texto longtext, PRIMARY KEY(id), FOREIGN KEY(actividades) REFERENCES actividades(id), FOREIGN KEY (estudiante) REFERENCES usuario(id));
+CREATE TABLE multimedia(id int AUTO_INCREMENT, curso int, titulo varchar(255), url varchar(255), PRIMARY KEY(id), FOREIGN KEY(curso) REFERENCES cursos(id));
 ");
 $stm -> execute();
 if ($stm) {
