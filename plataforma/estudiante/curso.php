@@ -152,6 +152,29 @@ $profesor = $sq2 -> fetch();
 					 ?>
 					</table>
 				</div>
+				<br><br><div class="span">Material multimedia</div><br><br>
+				<div class="actividades">
+					<table>
+					<tr>
+						<th>Nombre</th>
+						<th>Abrir multimedia</th>
+					</tr>
+					<?php 
+					$id = $_REQUEST['id'];
+					$st = $conexion -> prepare("SELECT * FROM multimedia WHERE curso='$id'");
+					$st -> execute();
+					while ($actividades = $st -> fetch()) {
+					?>
+					<tr>
+						<td><?php echo $actividades['titulo']; $url = $actividades['url'];?></td>
+						<td><a href="abrir_multimedia.php?url=<?php echo $url ?>"><img src="../icons/multimedia.png"></a></td>
+					</tr>
+					<?php
+					}
+
+					 ?>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

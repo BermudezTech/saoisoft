@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include 'permisos_profesor.php';
+include 'permisos_estudiante.php';
 include '../conexion.php';
 $st = $conexion -> prepare("SELECT * FROM datos_institucion");
 $st -> execute();
@@ -71,10 +71,6 @@ $urlextension = $urlextension[1];
 	}else if ($urlextension == 'mp4') {
 	?>
 	<video src="../<?php echo $url ?>" style="width: 100%;" controls autoplay></video>
-	<?php
-	}else if($urlextension == 'mp3'){
-	?>
-	<audio src="../<?php echo $url ?>" controls style="width: 100%;"></audio>
 	<?php
 	}
 }else if($urlp[0]=="https:"||$urlp[0]=="https:"){
