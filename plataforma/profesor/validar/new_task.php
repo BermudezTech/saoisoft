@@ -6,6 +6,47 @@ session_start();
 $id = $_SESSION['id'];
 $actividadid = $_REQUEST['actividadid'];
 switch ($tipo) {
+	case 1:
+?>
+<div class="span">Nuevo examen</div>
+<form action="validar/newtaskupload.php?tipo=<?php echo $tipo ?>&actividadid=<?php echo $actividadid ?>">
+	<div class="form">
+<br><label>Coloque el nombre del examen:</label>
+<input type="input" name="name">
+<label>Seleccione el curso:</label>
+		<select name="curso"><option value="0">Seleccionar curso</option>
+<?php 
+		$st = $conexion -> prepare("SELECT * FROM relprofesorcursos WHERE profesor = '$id'");
+		$st -> execute();
+		$i = 1;
+		while ($rel = $st -> fetch()) {
+			$cursos[$i] = $rel['cursos'];
+			$i++;
+		}
+		$num = count($cursos);
+		for ($i=1; $i <= $num; $i++) { 
+			$idc = $cursos[$i];
+			$st2 = $conexion -> prepare("SELECT * FROM cursos WHERE id='$idc'");
+			$st2 -> execute();
+			$curso = $st2 -> fetch();
+		?>
+		<option value="<?php echo $curso['id'] ?>"><?php echo $curso['nombre']; ?></option>
+		<?php
+		}
+		 ?>
+		</select>
+		<label>Fecha de finalizacion</label>
+		<input type="date" name="date">
+		<label>Numero de intentos:</label>
+		<input type="number" name="trys">
+		<label>Tiempo para realizar el examen:</label><br>
+		Horas:<input type="number" name="hours" style="width: 10%;">
+		Minutos:<input type="number" name="minutes" style="width: 10%;"><br>
+		<input type="submit" class="button-submit-green" value="Empezar creacion examen">
+</div>
+</form>
+<?php
+	break;
 	case 2:
 ?>
 <div class="form">

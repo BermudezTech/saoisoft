@@ -5,8 +5,33 @@ include '../conexion.php';
 $st = $conexion -> prepare("SELECT * FROM datos_institucion");
 $st -> execute();
 $fila = $st -> fetch();
-
-
+//include 'permisos_admin.php';
+$id = $_SESSION['id'];
+$st2 = $conexion -> prepare("SELECT * FROM usuario WHERE id='$id'");
+$st2 -> execute();
+$usuario = $st2 -> fetch();
+if (password_verify($id, $usuario['pass'])) {
+?>
+<div class="modal7" id="modal7" style="display: inline-flex;">
+					<div class="contenidomodal7">
+						<h2>Bienvenido usuario</h2><br>
+						<h3>Hemos detectado que su usuario y contraseña son iguales, por seguridad, cree una nueva contraseña para su cuenta:</h3>
+						<div class="iframe">
+							<iframe src="changepass.php?usuario=<?php echo $id ?>&pass=<?php echo $usuario['pass'] ?>" frameborder="1" style="width: 100%; height: 120%; display: block;" id="myframe"></iframe>
+							<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+							<script>
+								$('#myframe').contents().find("body")
+ 	.append($("<style type='text/css'>  .header,.aside{display:none;}  </style>"));
+   		
+							</script>
+						</div>
+					</div>
+						<br><br><br>
+					</div>
+							
+				</div>
+<?php
+}
 
  ?>
 <!DOCTYPE html>
