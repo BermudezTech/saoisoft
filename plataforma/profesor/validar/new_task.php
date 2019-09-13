@@ -9,7 +9,7 @@ switch ($tipo) {
 	case 1:
 ?>
 <div class="span">Nuevo examen</div>
-<form action="validar/newtaskupload.php?tipo=<?php echo $tipo ?>&actividadid=<?php echo $actividadid ?>">
+<form action="validar/newtaskupload.php?tipo=<?php echo $tipo ?>&actividadid=<?php echo $actividadid ?>" method="POST">
 	<div class="form">
 <br><label>Coloque el nombre del examen:</label>
 <input type="input" name="name">

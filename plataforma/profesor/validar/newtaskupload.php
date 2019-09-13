@@ -7,6 +7,16 @@ $actividadid = $_REQUEST['actividadid'];
 $tipo = $_REQUEST['tipo'];
 $date = $_POST['date'];
 switch ($tipo) {
+	case 1:
+	$name = $_POST['name'];
+	$curso = $_POST['curso'];
+	$date = $_POST['date'];
+	$trys = $_POST['trys'];
+	$hours = $_POST['hours'];
+	$minutes = $_POST['minutes'];
+		
+	die();
+	break;
 	case 2:
 if (isset($_POST['chk'])) {
 	$tipo = 1;
