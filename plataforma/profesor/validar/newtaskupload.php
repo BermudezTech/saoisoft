@@ -14,7 +14,9 @@ switch ($tipo) {
 	$trys = $_POST['trys'];
 	$hours = $_POST['hours'];
 	$minutes = $_POST['minutes'];
-		
+	$sq = $conexion -> prepare("INSERT INTO exam(nombre, curso, fecha, intentos, horas, minutos) VALUES ('$name','$curso','$date','$trys','$hours','$minutes')");
+	$sq -> execute();
+	header('Location: ../nuevo_examen.php');
 	die();
 	break;
 	case 2:

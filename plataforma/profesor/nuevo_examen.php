@@ -5,8 +5,9 @@ include '../conexion.php';
 $st = $conexion -> prepare("SELECT * FROM datos_institucion");
 $st -> execute();
 $fila = $st -> fetch();
-
-
+$sq = $conexion -> prepare("SELECT * FROM exam ORDER BY id DESC");
+$sq -> execute();
+$examen = $sq -> fetch();
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,9 +58,55 @@ $fila = $st -> fetch();
 				CONTENIDO
 
 				-->
+				<h1><?php echo $examen['nombre'] ?></h1>
+				<div class="form"><br>
+					<div class="span">Crear examen</div><br>
+					<label>Crear pregunta:</label><br><br>
+					<button class="examselection" onclick="abierta()">Abierta</button>
+					<button class="examselection" onclick="cerrada()">Seleccion multiple</button>
+					<style type="text/css">
+						.examselection{
+							border: none;
+							cursor: pointer;
+							padding: 10px;
+							color: #ffffff;
+							background-color: <?php echo $fila['color2'] ?>;
+							box-sizing: border-box;
+						}
+						.examselection:hover{
+							opacity: 0.7;
+						}
+						textarea{
+							width: 100%;
+							resize: none;
+							padding: 5px;
+							box-sizing: border-box;
+							height: 100px;
+						}
+						#abierta{
+							display: none;
+						}
+						#cerrada{
+							display: none;
+						}
+					</style><br>
+					<div id="abierta">
+					<br><label>Pregunta:</label><textarea></textarea></div>
+					<div id="cerrada"><br><br><label>Pregunta:</label><br><textarea></textarea><br><br><label>Respuesta correcta</label><input type="text" name="correcta"><br><hr><br><label>Respuesta adicional</label><input type="text" name="adicional1"><br><label>Respuesta adicional</label><input type="text" name="adicional2"><br><label>Respuesta adicional</label><input type="text" name="adicional3"></div>
+				</div>	
 			</div>
 		</div>
 	</div>
 <script type="text/javascript" src="botones.js"></script>
+<script type="text/javascript">
+	function abierta(){
+		document.getElementById('cerrada').style.display='none';
+		document.getElementById('abierta').style.display='block';
+	}
+	function cerrada(){
+		document.getElementById('abierta').style.display='none';
+		document.getElementById('cerrada').style.display='block';
+	}
+</script>
 </body>
 </html>
