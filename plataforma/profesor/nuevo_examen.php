@@ -8,6 +8,13 @@ $fila = $st -> fetch();
 $sq = $conexion -> prepare("SELECT * FROM exam ORDER BY id DESC");
 $sq -> execute();
 $examen = $sq -> fetch();
+$examenid = $examen['id'];
+if (isset($_REQUEST['num'])) {
+	$num = $_REQUEST['num'];
+}else{
+	$num = 1;
+}
+
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -90,9 +97,27 @@ $examen = $sq -> fetch();
 							display: none;
 						}
 					</style><br>
+					<form action="validar/subirpregunta.php" method="POST">
+						<input type="text" name="num" value="<?php echo $num ?>" style="display: none;">
+					<input type="text" name="examen" value="<?php echo $examenid ?>" style="display: none;">
 					<div id="abierta">
-					<br><label>Pregunta:</label><textarea></textarea></div>
-					<div id="cerrada"><br><br><label>Pregunta:</label><br><textarea></textarea><br><br><label>Respuesta correcta</label><input type="text" name="correcta"><br><hr><br><label>Respuesta adicional</label><input type="text" name="adicional1"><br><label>Respuesta adicional</label><input type="text" name="adicional2"><br><label>Respuesta adicional</label><input type="text" name="adicional3"></div>
+					<br><label>Pregunta:</label><textarea onkeydown="habilitarbotones()" name="preguntaa"></textarea></div>
+					<div id="cerrada"><br><br><label>Pregunta:</label><br><textarea onkeydown="habilitarbotones()" name="preguntac"></textarea><br><br><label>Respuesta correcta</label><input type="text" name="correcta"><br><hr><br><label>Respuesta adicional</label><input type="text" name="adicional1"><br><label>Respuesta adicional</label><input type="text" name="adicional2"><br><label>Respuesta adicional</label><input type="text" name="adicional3"></div><br>
+					<div class="form"><input type="submit" value="Siguiente pregunta" style="width: 50%;height: 36px;" class="buttonsexamen" id="validarexamen"><button disabled="true" class="buttonsexamen" id="validarexamen2" onclick="finalizar()">Finalizar examen</button></div></form>
+					<style type="text/css">
+						.buttonsexamen{
+							border: none;
+							padding: 10px;
+							box-sizing: border-box;
+							width: 50%;
+							background-color: <?php echo $fila['color2'] ?>;
+							color: #ffffff;
+							cursor: pointer;
+						}
+						.buttonsexamen:hover{
+							opacity: 0.7;
+						}
+					</style>
 				</div>	
 			</div>
 		</div>
@@ -106,6 +131,9 @@ $examen = $sq -> fetch();
 	function cerrada(){
 		document.getElementById('abierta').style.display='none';
 		document.getElementById('cerrada').style.display='block';
+	}
+	function habilitarbotones(){
+		document.getElementById('validarexamen2').disabled = "false";
 	}
 </script>
 </body>
