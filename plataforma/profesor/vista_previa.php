@@ -72,6 +72,15 @@ $exameninfo = $st -> fetch();
 					}
 				</style>
 				<?php 
+				$numeros = range(1,4);
+				shuffle($numeros);
+				foreach ($numeros as $numero) {
+					# code...
+					echo $numero;
+				}
+
+				 ?>
+				<?php 
 				$st = $conexion -> prepare("SELECT * FROM question WHERE examen='$examen'");
 				$st -> execute();
 				$contador = 1;
@@ -88,9 +97,23 @@ if ($preguntas['tipo']==1) {
 	$st2 = $conexion -> prepare("SELECT * FROM answer WHERE question = '$pid' && estado=1");
 	$st2 -> execute();
 	$respuestacorrecta=$st2->fetch();
+	$respuestas[1] = $respuestacorrecta['respuesta'];
+	$st3 = $conexion -> prepare("SELECT * FROM answer WHERE question='$pid' && estado=2");
+	$st3 -> execute();
+	$contador2 = 2;
+	while ($respuestasincorrectas = $st3 -> fetch()) {
+		$respuestaid=$respuestasincorrectas['id'];
+		$respuestas[$contador2] = $respuestasincorrectas['respuesta'];
+		$contador2++;
+	}
+	$contador2 = $contador2 - 1;
+$numeros = range(1,$contador2);
+shuffle($numeros);
+foreach ($numeros as $numero) {
 ?>
-<input type="radio" id="respuesta1"><label for="respuesta1"><?php echo $respuestacorrecta['respuesta'] ?></label>
+<input type="radio" id="<?php echo $numeros ?>" name="<?php echo $preguntas['id'] ?>"><label for="<?php echo $numeros ?>"><?php echo $respuestas[$numero] ?></label><br><br>
 <?php
+}
 }
 $contador++;
 				}
