@@ -162,6 +162,9 @@ if (isset($_REQUEST['num'])) {
 								$adicionales[$c] = $adicional['respuesta'];
 								$c++;
 							}
+							if (!isset($adicionales[1])) {
+								$adicionales[1] = "";	
+							}
 							if (!isset($adicionales[2])) {
 								$adicionales[2] = "";	
 							}
@@ -177,7 +180,7 @@ if (isset($_REQUEST['num'])) {
 
 					 ?>
 						<input type="text" name="correcta" value="<?php echo $respuestacorrecta ?>"><br><hr><br><label>Respuesta adicional</label><input type="text" name="adicional1" value="<?php echo $adicionales[1] ?>"><br><label>Respuesta adicional</label><input type="text" name="adicional2" value="<?php echo $adicionales[2] ?>"><br><label>Respuesta adicional</label><input type="text" name="adicional3" value="<?php echo $adicionales[3] ?>"></div><br>
-					<div class="form" style="display: flex; height: 36px;"><input type="submit" value="Siguiente pregunta" style="width: 50%;height: 36px;" class="buttonsexamen" id="validarexamen"><button disabled="true" class="buttonsexamen" id="validarexamen3" onclick="vista_previa()">Vista Previa</button><button disabled="true" class="buttonsexamen" id="validarexamen2" onclick="finalizar()">Finalizar examen</button></div><br><br>
+					<div class="form" style="display: flex; height: 36px;"><input type="submit" value="Siguiente pregunta" style="width: 50%;height: 36px;" class="buttonsexamen" id="validarexamen"><button class="buttonsexamen" id="validarexamen3" type="button" onclick="vista_previa()">Vista Previa</button><button disabled="true" class="buttonsexamen" id="validarexamen2" onclick="finalizar()">Finalizar examen</button></div><br><br>
 					<style>
 						.preguntas{
 							display: flex;
@@ -219,6 +222,11 @@ if (isset($_REQUEST['num'])) {
 	}
 	function goquestion(numero){
 		location.href="nuevo_examen.php?examen=<?php echo $examenid ?>&num="+numero;
+	}
+	function vista_previa(){
+		var examen = <?php echo $_REQUEST['examen']; ?>;
+		location.href = "vista_previa.php?examen="+examen;
+		console.log("hola");
 	}
 	function verificar(){
 		<?php 

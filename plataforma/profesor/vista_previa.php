@@ -72,13 +72,12 @@ $exameninfo = $st -> fetch();
 					}
 				</style>
 				<?php 
-				$numeros = range(1,4);
+				/*$numeros = range(1,4);
 				shuffle($numeros);
 				foreach ($numeros as $numero) {
 					# code...
 					echo $numero;
-				}
-
+				}*/
 				 ?>
 				<?php 
 				$st = $conexion -> prepare("SELECT * FROM question WHERE examen='$examen'");
@@ -111,7 +110,7 @@ $numeros = range(1,$contador2);
 shuffle($numeros);
 foreach ($numeros as $numero) {
 ?>
-<input type="radio" id="<?php echo $numeros ?>" name="<?php echo $preguntas['id'] ?>"><label for="<?php echo $numeros ?>"><?php echo $respuestas[$numero] ?></label><br><br>
+<input type="radio" id="<?php echo $pid.$numero ?>" name="<?php echo $pid ?>"><label for="<?php echo $pid.$numero ?>"> <?php echo $respuestas[$numero] ?></label><br><br>
 <?php
 }
 }
@@ -119,9 +118,32 @@ $contador++;
 				}
 
 				 ?>
-			</div>
+				 <div class="form">
+<button class="buttonsexamen" id="validarexamen3" onclick="atras()">Atras</button><button class="buttonsexamen" id="validarexamen2" onclick="finalizar()">Finalizar examen</button></div>
 		</div>
+			</div>
+
+<style type="text/css">
+						.buttonsexamen{
+							border: none;
+							padding: 10px;
+							box-sizing: border-box;
+							width: 50%;
+							background-color: <?php echo $fila['color2'] ?>;
+							color: #ffffff;
+							cursor: pointer;
+						}
+						.buttonsexamen:hover{
+							opacity: 0.7;
+						}
+					</style>
 	</div>
 <script type="text/javascript" src="botones.js"></script>
+<script type="text/javascript">
+	function atras(){
+		var examen = <?php echo $_REQUEST['examen']; ?>;
+		location.href = "nuevo_examen.php?examen="+examen;
+	}
+</script>
 </body>
 </html>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2019 a las 04:42:46
--- Versión del servidor: 10.1.30-MariaDB
--- Versión de PHP: 7.1.28
+-- Tiempo de generación: 20-09-2019 a las 21:10:14
+-- Versión del servidor: 10.1.37-MariaDB
+-- Versión de PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -62,7 +62,8 @@ INSERT INTO `answer` (`id`, `respuesta`, `question`, `estado`) VALUES
 (7, 'William Shakespeare', 20, 1),
 (8, 'Oscar Wilde', 20, 2),
 (9, 'Gabriel Garcia Marquez', 20, 2),
-(10, 'Homero', 20, 2);
+(10, 'Homero', 20, 2),
+(11, '100', 21, 1);
 
 -- --------------------------------------------------------
 
@@ -266,7 +267,8 @@ INSERT INTO `question` (`id`, `pregunta`, `examen`, `tipo`) VALUES
 (15, '¿Cuales son los colores institucionales?', 1, 1),
 (16, '¿Cual es la capital de Colombia?', 1, 1),
 (17, '¿Cual es la capital de Canada?', 1, 1),
-(20, '¿Quien es el autor de Romeo y Julieta?', 1, 2);
+(20, '¿Quien es el autor de Romeo y Julieta?', 1, 2),
+(21, '¿Cuantos huesos tiene el cuerpo humano?', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -292,6 +294,13 @@ CREATE TABLE `relestudiantesalon` (
   `estudiante` int(11) DEFAULT NULL,
   `salon` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `relestudiantesalon`
+--
+
+INSERT INTO `relestudiantesalon` (`id`, `estudiante`, `salon`) VALUES
+(1, 1000019673, 1);
 
 -- --------------------------------------------------------
 
@@ -393,7 +402,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `nombres`, `apellidos`, `email`, `tipo_usuario`, `pass`, `lugar_nacimiento`, `fecha_nacimiento`, `direccion`, `telefono`, `foto`, `tipo_documento`) VALUES
 (123456789, 'El', 'Administrador', 'saoisoft@gmail.com', 0, '$2y$10$yTpQsYNQZ.fRS5O44mStw.tPMbBzTfLyJvQZGTCaCpG.AXqV.U5tO', NULL, '2006-06-17', 'Calle 18', '1234567', 'usuarios/fotos/123456789.jpg', 'CC'),
-(889889889, 'Daniel', 'Ochoa', 'dochoa8b9@gmail.com', 2, '$2y$10$S2hCIGSnYfkPUttOcWrl7.ufJC19TSCYymwOA.6noyeLcQQahiDW.', 'Bogota D.C.', '1998-08-17', 'Calle 24', '2030946', 'usuarios/fotos/889889889.jpg', 'CC');
+(889889889, 'Daniel', 'Ochoa', 'dochoa8b9@gmail.com', 2, '$2y$10$S2hCIGSnYfkPUttOcWrl7.ufJC19TSCYymwOA.6noyeLcQQahiDW.', 'Bogota D.C.', '1998-08-17', 'Calle 24', '2030946', 'usuarios/fotos/889889889.jpg', 'CC'),
+(1000019673, 'Karen Daniela', 'Lopez Buitrago', 'karenycharlie02@gmail.com', 1, '$2y$10$BDt4O/dpc/1hfras7fa2AeMTHrBp6oX3lZgPpUOIwMPTHy2BdT65i', 'Bogotá D.C.', '2002-01-01', 'Cra 12 bis n 26 a 20 sur', '4452607', 'usuarios/fotos/1000019673.jpg', 'TI');
 
 --
 -- Índices para tablas volcadas
@@ -556,7 +566,7 @@ ALTER TABLE `actividades`
 -- AUTO_INCREMENT de la tabla `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `calificaciones`
@@ -610,7 +620,7 @@ ALTER TABLE `publicaciones`
 -- AUTO_INCREMENT de la tabla `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `relestudiantepadre`
@@ -622,7 +632,7 @@ ALTER TABLE `relestudiantepadre`
 -- AUTO_INCREMENT de la tabla `relestudiantesalon`
 --
 ALTER TABLE `relestudiantesalon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `relprofesorcursos`
