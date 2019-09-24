@@ -20,9 +20,11 @@ CREATE TABLE actividades(id int AUTO_INCREMENT, nombre varchar(255), descripcion
 CREATE TABLE calificaciones(id int AUTO_INCREMENT, estudiante int, curso int, nota int,actividad int, PRIMARY KEY(id), FOREIGN KEY(estudiante) REFERENCES usuario(id), FOREIGN KEY (curso) REFERENCES cursos(id), FOREIGN KEY(actividad) REFERENCES actividades(id));
 CREATE TABLE resp_actividad(id int AUTO_INCREMENT, actividades int, estudiante int, url varchar(255), texto longtext, PRIMARY KEY(id), FOREIGN KEY(actividades) REFERENCES actividades(id), FOREIGN KEY (estudiante) REFERENCES usuario(id));
 CREATE TABLE multimedia(id int AUTO_INCREMENT, curso int, titulo varchar(255), url varchar(255), PRIMARY KEY(id), FOREIGN KEY(curso) REFERENCES cursos(id));
-CREATE TABLE exam(id int AUTO_INCREMENT, nombre varchar(255), curso int,fecha DATE,intentos int,horas int, minutos int, PRIMARY KEY(id), FOREIGN KEY(curso) REFERENCES cursos(id));
+CREATE TABLE exam(id int AUTO_INCREMENT, nombre varchar(255), curso int,fecha DATE,intentos int,horas int, minutos int, maxscore int, PRIMARY KEY(id), FOREIGN KEY(curso) REFERENCES cursos(id));
 CREATE TABLE question(id int AUTO_INCREMENT, pregunta varchar(1000), examen int, tipo int, PRIMARY KEY(id), FOREIGN KEY(examen) REFERENCES exam(id));
 CREATE TABLE answer(id int AUTO_INCREMENT, respuesta varchar(1000), question int, estado int, PRIMARY KEY(id), FOREIGN KEY(question) REFERENCES question(id));
+CREATE TABLE examscores(id int AUTO_INCREMENT, estudiante int, nota float, examen int, PRIMARY KEY(id), FOREIGN KEY(estudiante) REFERENCES usuario(id), FOREIGN KEY (examen) REFERENCES exam(id));
+CREATE TABLE relestudianteresp(id int AUTO_INCREMENT, pregunta int, respuestaa varchar(1000), respuestac int, estudiante int, estado int, PRIMARY KEY(id), FOREIGN KEY (pregunta) REFERENCES question(id), FOREIGN KEY(respuestac) REFERENCES answer(id), FOREIGN KEY(estudiante) REFERENCES usuario(id));
 ");
 $stm -> execute();
 if ($stm) {

@@ -167,7 +167,43 @@ $profesor = $sq2 -> fetch();
 					?>
 					<tr>
 						<td><?php echo $actividades['titulo']; $url = $actividades['url'];?></td>
-						<td><a href="abrir_multimedia.php?url=<?php echo $url ?>"><img src="../icons/multimedia.png"></a></td>
+						<td><a href="abrir_multimedia.php?url=<?php echo $url ?>"><img src="../icons/multimedia.png" style="width: 30px;"></a></td>
+					</tr>
+					<?php
+					}
+
+					 ?>
+					</table>
+				</div>
+				<br><div class="span">Examenes</div><br>
+				<div class="actividades">
+					<table>
+					<tr>
+						<th>Nombre</th>
+						<th>Responder</th>
+						<th>Nota</th>
+					</tr>
+					<?php 
+					$id = $_REQUEST['id'];
+					$st = $conexion -> prepare("SELECT * FROM exam WHERE curso='$id'");
+					$st -> execute();
+					while ($actividades = $st -> fetch()) {
+						$examenid = $actividades['id'];
+					?>
+					<tr>
+						<td><?php echo $actividades['nombre'];?></td>
+						<td><a href="responder_examen.php?examen=<?php echo $examenid ?>" style="width: 30px;"><img src="../icons/exclamacion.png" style="width: 30px;"></a></td>
+						<td><?php 
+						$estudiante = $_SESSION['id'];
+							$st2 = $conexion -> prepare("SELECT * FROM examscores WHERE examen='$examenid' && estudiante='$estudiante'");
+							$st2 -> execute();
+							$u = 1;
+							while ($notas = $st2->fetch()) {
+								$nota2[$u] = $notas['nota'];
+								$u++;
+							}
+							if(isset($nota2)){echo max($nota2);}
+						 ?></td>
 					</tr>
 					<?php
 					}

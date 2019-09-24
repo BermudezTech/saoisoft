@@ -118,8 +118,8 @@ $contador++;
 				}
 
 				 ?>
-				 <div class="form">
-<button class="buttonsexamen" id="validarexamen3" onclick="atras()">Atras</button><button class="buttonsexamen" id="validarexamen2" onclick="finalizar()">Finalizar examen</button></div>
+				 <br><br><div class="form">
+<button class="buttonsexamen" id="validarexamen3" onclick="atras()">Atras</button><button class="buttonsexamen" id="validarexamen2" onclick="finalizar()" type="button">Finalizar examen</button></div>
 		</div>
 			</div>
 
@@ -143,6 +143,10 @@ $contador++;
 	function atras(){
 		var examen = <?php echo $_REQUEST['examen']; ?>;
 		location.href = "nuevo_examen.php?examen="+examen;
+	}
+	function finalizar(){
+		alert('Examen finalizado, el estudiante puede ver el examen disponible en la bandeja de la clase. Si desea editar este examen más tarde, ingrese a la materia correspondiente y busque el examen.');
+		location.href = 'index.php';
 	}
 </script>
 </body>

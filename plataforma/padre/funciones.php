@@ -69,7 +69,7 @@ $fila = $st -> fetch();
 				<div class="span">Funciones estudiante</div>
 				<div class="botonesdiv">
 					<button onclick="clases()"><img src="../icons/materia.png">Materias</button>
-					<button onclick="newactivity()"><img src="../icons/task.png">Revisar tareas/eventos</button>
+					<button onclick="revisar_tareas()"><img src="../icons/task.png">Revisar tareas/eventos</button>
 				</div>
 				<div class="span">Otras funciones</div>
 				<div class="botonesdiv">

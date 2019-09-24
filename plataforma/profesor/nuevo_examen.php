@@ -13,6 +13,9 @@ if(!isset($_REQUEST['examen'])){
 	header("location: nuevo_examen.php?examen=$examenid&num=1");
 }
 $examenid = $_REQUEST['examen'];
+$st3 = $conexion -> prepare("SELECT * FROM exam WHERE id='$examenid'");
+$st3 -> execute();
+$examen = $st3 -> fetch();
 if (isset($_REQUEST['num'])) {
 	$num = $_REQUEST['num'];
 	$st = $conexion -> prepare("SELECT * FROM question WHERE examen = '$examenid'");
@@ -180,7 +183,7 @@ if (isset($_REQUEST['num'])) {
 
 					 ?>
 						<input type="text" name="correcta" value="<?php echo $respuestacorrecta ?>"><br><hr><br><label>Respuesta adicional</label><input type="text" name="adicional1" value="<?php echo $adicionales[1] ?>"><br><label>Respuesta adicional</label><input type="text" name="adicional2" value="<?php echo $adicionales[2] ?>"><br><label>Respuesta adicional</label><input type="text" name="adicional3" value="<?php echo $adicionales[3] ?>"></div><br>
-					<div class="form" style="display: flex; height: 36px;"><input type="submit" value="Siguiente pregunta" style="width: 50%;height: 36px;" class="buttonsexamen" id="validarexamen"><button class="buttonsexamen" id="validarexamen3" type="button" onclick="vista_previa()">Vista Previa</button><button disabled="true" class="buttonsexamen" id="validarexamen2" onclick="finalizar()">Finalizar examen</button></div><br><br>
+					<div class="form" style="display: flex; height: 36px;"><input type="submit" value="Siguiente pregunta/Guardar pregunta" style="width: 50%;height: 36px;" class="buttonsexamen" id="validarexamen"><button class="buttonsexamen" id="validarexamen3" type="button" onclick="vista_previa()">Vista Previa</button><button class="buttonsexamen" id="validarexamen2" onclick="finalizar()" type="button">Finalizar examen</button></div><br><br>
 					<style>
 						.preguntas{
 							display: flex;
@@ -245,6 +248,10 @@ if (isset($_REQUEST['num'])) {
 		}
 }
 		 ?>
+	}
+	function finalizar(){
+		alert('Examen finalizado, el estudiante puede ver el examen disponible en la bandeja de la clase. Si desea editar este examen más tarde, ingrese a la materia correspondiente y busque el examen.');
+		location.href = 'index.php';
 	}
 </script>
 </body>

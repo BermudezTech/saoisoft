@@ -147,3 +147,7 @@ function usuarioperfil(id){
 function cursopublicacion(id){
 	location.href = "publicaciones_curso.php?id=" + id;
 }
+
+function revisar_tareas(){
+	location.href = "mis_tareas.php";
+}

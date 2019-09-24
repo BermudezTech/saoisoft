@@ -3,26 +3,8 @@
 						<div class="close">
 							<button type="button" onclick="cerrarm()">X</button>
 						</div>
-						<h2>Calificar</h2><br><br>
+						<h2>Responder actividad</h2><br><br>
 						<div class="calificar" id="calificar"></div>
-						<style>
-							.calificar{
-								width: 100%;
-								height: 100%;
-							}
-						</style>
-					</div>
-						<br><br><br>
-					</div>
-							
-				</div>
-				 <div class="modal8" id="modal8" style="">
-					<div class="contenidomodal8">
-						<div class="close">
-							<button type="button" onclick="cerrarm2()">X</button>
-						</div>
-						<h2>Calificar</h2><br><br>
-						<div class="calificarexamen" id="calificarexamen"></div>
 						<style>
 							.calificar{
 								width: 100%;
@@ -36,11 +18,12 @@
 				</div>
  <?php 
 session_start();
-include 'permisos_profesor.php';
+include 'permisos_padre.php';
 include '../conexion.php';
 $st = $conexion -> prepare("SELECT * FROM datos_institucion");
 $st -> execute();
 $fila = $st -> fetch();
+
 //include 'permisos_admin.php';
 
  ?>
@@ -126,9 +109,7 @@ $profesor = $sq2 -> fetch();
 						<th>Nombre</th>
 						<th>Descripcion</th>
 						<th>Adjunto</th>
-						<th>Editar</th>
-						<th>Eliminar</th>
-						<th>Calificar</th>
+						<th>Calificacion</th>
 					</tr>
 					<?php 
 					$id = $_REQUEST['id'];
@@ -143,9 +124,21 @@ $profesor = $sq2 -> fetch();
 						?>
 						<?php
 						}else{?><a href="../<?php echo $actividades['adjunto'] ?>"><img src="../icons/carpeta.png"></a><?php } ?></td>
-						<td class="buttons"><a href="newactivity.php?tipo=4&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/lapiz.png"></a></td>
-						<td class="buttons"><a href="newactivity.php?tipo=5&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/bin.png"></a></td>
-						<td class="buttons"><a href="#" onclick="calificar(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)"><img src="../icons/info.png"></a></td>
+						<td><?php 
+						$id = $_SESSION['id'];
+						$sql = "SELECT * FROM relestudiantepadre WHERE (padre='$id') || (madre='$id')";
+						$sq1 = $conexion -> prepare($sql);
+						$sq1 -> execute();
+						$estudiante=$sq1 -> fetch();
+						$estudiante = $estudiante['estudiante'];
+						$actividad = $actividades['id'];
+						$sql = "SELECT * FROM calificaciones WHERE estudiante = '$estudiante' AND actividad = '$actividad'";
+						$st3 = $conexion -> prepare($sql);
+						$st3 -> execute();
+						$nota = $st3 -> fetch();
+
+						echo $nota['nota'];
+						  ?></td>
 					</tr>
 					<style>
 						td img{
@@ -160,18 +153,13 @@ $profesor = $sq2 -> fetch();
 
 					 ?>
 					</table>
-					<div class="form">
-						<button class="button-submit-green" type="button" style="width: 100%; margin-top: 10px; border: none; padding: 5px; box-sizing: border-box; color: #ffffff; font-weight: bold; cursor: pointer;" onclick="newactivity()">Nueva actividad</button>
-					</div>
-
 				</div>
-				<br><div class="span">Multimedia</div><br>
+				<br><br><div class="span">Material multimedia</div><br><br>
 				<div class="actividades">
 					<table>
 					<tr>
 						<th>Nombre</th>
 						<th>Abrir multimedia</th>
-						<th>Eliminar</th>
 					</tr>
 					<?php 
 					$id = $_REQUEST['id'];
@@ -181,33 +169,20 @@ $profesor = $sq2 -> fetch();
 					?>
 					<tr>
 						<td><?php echo $actividades['titulo']; $url = $actividades['url'];?></td>
-						<td><a href="abrir_multimedia.php?url=<?php echo $url ?>"><img src="../icons/multimedia.png"></a></td>
-						<td class="buttons"><a href="newactivity.php?tipo=6&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/bin.png"></a></td>
+						<td><a href="abrir_multimedia.php?url=<?php echo $url ?>"><img src="../icons/multimedia.png" style="width: 30px;"></a></td>
 					</tr>
-					<style>
-						td img{
-							height: 30px;
-						}
-						.buttons{
-							text-align: center;
-						}
-					</style>
 					<?php
 					}
 
 					 ?>
 					</table>
-					<div class="form">
-						<button class="button-submit-green" type="button" style="width: 100%; margin-top: 10px; border: none; padding: 5px; box-sizing: border-box; color: #ffffff; font-weight: bold; cursor: pointer;" onclick="location.href='newactivity.php?tipo=3&actividadid=1'">Nueva multimedia</button>
-					</div>
-					<br><div class="span">Examenes</div><br>
-					<div class="actividades">
+				</div>
+				<br><div class="span">Examenes</div><br>
+				<div class="actividades">
 					<table>
 					<tr>
 						<th>Nombre</th>
-						<th>Editar</th>
-						<th>Eliminar</th>
-						<th>Calificar</th>
+						<th>Calificacion</th>
 					</tr>
 					<?php 
 					$id = $_REQUEST['id'];
@@ -217,25 +192,38 @@ $profesor = $sq2 -> fetch();
 						$examenid = $actividades['id'];
 					?>
 					<tr>
-						<td><?php echo $actividades['nombre']; ?></td>
-						<td class="buttons"><a href="nuevo_examen.php?examen=<?php echo $examenid ?>"><img src="../icons/lapiz.png"></a></td>
-						<td class="buttons"><a href="newactivity.php?tipo=7&actividadid=<?php echo $actividades['id'] ?>"><img src="../icons/bin.png"></a></td><?php $id_curso = $_REQUEST['id']; ?>
-						<td class="buttons"><button type="button" onclick="calificarexamen(<?php echo $actividades['id'] ?>, <?php echo $id_curso; ?>)" style="border: none; background-color: transparent; cursor: pointer;"><img src="../icons/info.png" ></button></td>
+						<td><?php echo $actividades['nombre'];?></td>
+						<td><?php 
+						$id = $_SESSION['id'];
+						$sql = "SELECT * FROM relestudiantepadre WHERE (padre='$id') || (madre='$id')";
+						$sq = $conexion -> prepare($sql);
+						$sq -> execute();
+						while ($estudiante = $sq -> fetch()) {
+							$estudianteid = $estudiante['estudiante'];
+							$salon = $curso['salon'];
+							$st2 = $conexion -> prepare("SELECT * FROM relestudiantesalon WHERE estudiante='$estudianteid'");
+							$st2 -> execute();
+							$relestudiantesalon = $st2 -> fetch();
+							if ($relestudiantesalon['salon'] == $salon) {
+								$estudianteidf = $estudiante['estudiante'];
+							}
+						}
+						$sql = "SELECT * FROM examscores WHERE examen='$examenid' && estudiante='$estudianteidf'";
+							$st2 = $conexion -> prepare($sql);
+							$st2 -> execute();
+							$u = 1;
+							while ($notas = $st2->fetch()) {
+								$nota2[$u] = $notas['nota'];
+								$u++;
+							}
+							if(isset($nota2)){echo max($nota2);}
+						 ?></td>
 					</tr>
-					<style>
-						td img{
-							height: 30px;
-						}
-						.buttons{
-							text-align: center;
-						}
-					</style>
 					<?php
 					}
 
 					 ?>
 					</table>
-
 				</div>
 			</div>
 		</div>
@@ -259,7 +247,7 @@ $profesor = $sq2 -> fetch();
 <script>
 	function calificar(id, curso){
 		$.ajax({
-		url: 'validar/calificar.php',
+		url: 'validar/responder.php',
 		type: "POST",
 		data: { curso: curso, id:id},
 		success: function(response){
@@ -268,53 +256,8 @@ $profesor = $sq2 -> fetch();
 	});
 		document.getElementById('modal7').style.display = 'inline-flex';
 	}
-	function revisarenvio(id, curso, estudiante){
-		$.ajax({
-		url: 'validar/revisarenvio.php',
-		type: "POST",
-		data: { id:id, curso: curso,  estudiante:estudiante},
-		success: function(response){
-			document.getElementById('calificar').innerHTML = response;
-		}
-	});
-	}
-	function revisarenvioexamen(id, curso, estudiante){
-		$.ajax({
-		url: 'validar/revisarenvioexamen.php',
-		type: "POST",
-		data: { id:id, curso: curso,  estudiante:estudiante},
-		success: function(response){
-			document.getElementById('calificarexamen').innerHTML = response;
-		}
-	});
-	}
 	function cerrarm(){
 		document.getElementById('modal7').style.display = 'none';	
-	}
-	function cerrarm2(){
-		document.getElementById('modal8').style.display = 'none';	
-	}
-
-	function calificarexamen(examen,idcurso){
-		$.ajax({
-		url: 'validar/calificar_examen.php',
-		type: "POST",
-		data: { idcurso: idcurso, examen:examen},
-		success: function(response){
-			document.getElementById('calificarexamen').innerHTML = response;
-		}
-	});
-		document.getElementById('modal8').style.display = 'inline-flex';
-	}
-	function calificarpregunta(estado, pregunta, estudiante, id, curso, intento){
-		$.ajax({
-		url: 'validar/revisarenvioexamen.php',
-		type: "POST",
-		data: { curso: curso, id:id, estado:estado, pregunta:pregunta, intento:intento, estudiante:estudiante},
-		success: function(response){
-			document.getElementById('calificarexamen').innerHTML = response;
-		}
-	});
 	}
 </script>
 </body>

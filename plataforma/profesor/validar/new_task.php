@@ -42,6 +42,7 @@ switch ($tipo) {
 		<label>Tiempo para realizar el examen:</label><br>
 		Horas:<input type="number" name="hours" style="width: 10%;">
 		Minutos:<input type="number" name="minutes" style="width: 10%;"><br>
+		Nota máxima: <input type="number" name="maxscore">
 		<input type="submit" class="button-submit-green" value="Empezar creacion examen">
 </div>
 </form>
@@ -217,6 +218,21 @@ switch ($tipo) {
 		</form>
 	</div>
 <?php
+	break;
+	case 7:
+?>
+	<div class="form">
+		<form action="validar/newtaskupload.php?tipo=<?php echo $tipo ?>&actividadid=<?php echo $actividadid; ?>" method="POST">
+			<?php 
+				$st = $conexion -> prepare("SELECT * FROM exam WHERE id='$actividadid'");
+				$st -> execute();
+				$actividad = $st -> fetch();
+			 ?>
+			<h2>Desea eliminar el examen <?php echo $actividad['nombre'] ?>?</h2>
+			<input type="submit" class="button-submit-green" value="SI">
+		</form>
+	</div>
+	<?php
 	break;
 }
 

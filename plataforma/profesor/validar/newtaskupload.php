@@ -14,7 +14,8 @@ switch ($tipo) {
 	$trys = $_POST['trys'];
 	$hours = $_POST['hours'];
 	$minutes = $_POST['minutes'];
-	$sq = $conexion -> prepare("INSERT INTO exam(nombre, curso, fecha, intentos, horas, minutos) VALUES ('$name','$curso','$date','$trys','$hours','$minutes')");
+	$maxscore = $_POST['maxscore'];
+	$sq = $conexion -> prepare("INSERT INTO exam(nombre, curso, fecha, intentos, horas, minutos,maxscore) VALUES ('$name','$curso','$date','$trys','$hours','$minutes','$maxscore')");
 	$sq -> execute();
 	header('Location: ../nuevo_examen.php');
 	die();
@@ -107,6 +108,33 @@ $curso = $curso['curso'];
 $query = "DELETE FROM multimedia WHERE id='$actividadid'";
 $st = $conexion -> prepare($query);
 $st -> execute();
+	break;
+	case 7:
+$sql = "SELECT * FROM question WHERE examen = '$actividadid'";
+$st = $conexion -> prepare($sql);
+$st -> execute();
+echo $sql . ";<br>";
+while ($preguntas = $st -> fetch()) {
+	$pregunta = $preguntas['id'];
+	$sql = "DELETE FROM answer WHERE question='$pregunta'";
+	$st2 = $conexion -> prepare($sql);
+	$st2 -> execute();
+	echo $sql . ";<br>";
+}
+$sql = "DELETE FROM question WHERE examen = '$actividadid'";
+$st = $conexion -> prepare($sql);
+$st -> execute();
+echo $sql . ";<br>";
+
+$sql = "SELECT * FROM exam WHERE id='$actividadid'";
+$st = $conexion -> prepare($sql);
+$st -> execute();
+$examen = $st -> fetch();
+$curso = $examen['curso'];
+$sql = "DELETE FROM exam WHERE id='$actividadid'";
+$st = $conexion -> prepare($sql);
+$st -> execute();
+echo $sql . ";<br>";
 	break;
 }
 $Location = 'Location: ../curso.php?id='.$curso;

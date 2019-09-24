@@ -10,6 +10,6 @@
 				<h4>Funciones</h4>
 				<button onclick="clases()"><i class="icon-materia"></i> Materias</button>
 				<button onclick="nuevo_correo()"><i class="icon-mail"></i> Enviar correo</button>
-				<button onclick=""><i class="icon-task"></i> Revisar tareas/eventos estudiante</button>
+				<button onclick="revisar_tareas()"><i class="icon-task"></i> Revisar tareas/eventos estudiante</button>
 
 <script type="text/javascript" src="../icons/icons.js"></script>

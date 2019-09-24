@@ -12,13 +12,86 @@ if (isset($_POST['preguntadb'])) {
 	if ($_POST['preguntaa'] != "") {
 	$pregunta = $_POST['preguntaa'];
 	}else{
+		$pdb = $_POST['preguntadb'];
 		$pregunta = $_POST['preguntac'];
+		$correcta = $_POST['correcta'];
+		$sql = "UPDATE answer SET respuesta='$correcta' WHERE estado=1 && question='$pdb'";
+		$st2 = $conexion -> prepare($sql);
+		$st2 -> execute();
+		if (isset($_POST['adicional1'])) {
+			$adicional1 = $_POST['adicional1'];
+			$st3 = $conexion -> prepare("SELECT * FROM answer WHERE estado=2 && question='$pdb'");
+			$st3 -> execute();
+			$contador = 1;
+			while ($respuesta = $st3 -> fetch()) {
+				if ($contador == 1) {
+					$respuestaid = $respuesta['id'];
+				}
+				$contador++;
+			}
+			if ($contador > 1) {
+				$sql = "UPDATE answer SET respuesta='$adicional1' WHERE estado=2 && question='$pdb' && id = '$respuestaid'";
+			$st2 = $conexion -> prepare($sql);
+		$st2 -> execute();
+			}else{
+				$sql = "INSERT INTO answer(respuesta, question, estado) VALUES ('$adicional1','$pdb',2)";
+			$st2 = $conexion -> prepare($sql);
+		$st2 -> execute();
+			}
+			echo $sql;
+			
+		}
+		if (isset($_POST['adicional2'])) {
+			$adicional2 = $_POST['adicional2'];
+			$st3 = $conexion -> prepare("SELECT * FROM answer WHERE estado=2 && question='$pdb'");
+			$st3 -> execute();
+			$contador = 1;
+			while ($respuesta = $st3 -> fetch()) {
+				if ($contador == 2) {
+					$respuestaid = $respuesta['id'];
+				}
+				$contador++;
+			}
+			if ($contador > 2) {
+				$sql = "UPDATE answer SET respuesta='$adicional2' WHERE estado=2 && question='$pdb' && id = '$respuestaid'";
+			$st2 = $conexion -> prepare($sql);
+		$st2 -> execute();
+			}else{
+				$sql = "INSERT INTO answer(respuesta, question, estado) VALUES ('$adicional2','$pdb',2)";
+			$st2 = $conexion -> prepare($sql);
+		$st2 -> execute();
+			}
+			echo $sql;
+			
+		}
+		if (isset($_POST['adicional3'])) {
+			$adicional3 = $_POST['adicional3'];
+			$st3 = $conexion -> prepare("SELECT * FROM answer WHERE estado=2 && question='$pdb'");
+			$st3 -> execute();
+			$contador = 1;
+			while ($respuesta = $st3 -> fetch()) {
+				if ($contador == 3) {
+					$respuestaid = $respuesta['id'];
+				}
+				$contador++;
+			}
+			if ($contador>3) {
+				$sql = "UPDATE answer SET respuesta='$adicional3' WHERE estado=2 && question='$pdb' && id = '$respuestaid'";
+			$st2 = $conexion -> prepare($sql);
+		$st2 -> execute();
+			}else{
+				$sql = "INSERT INTO answer(respuesta, question, estado) VALUES ('$adicional3','$pdb',2)";
+			$st2 = $conexion -> prepare($sql);
+		$st2 -> execute();
+			}	
+			
+		}
 	}
 	$idpdb = $_POST['preguntadb'];
 	$sq = $conexion -> prepare("UPDATE question SET pregunta='$pregunta' WHERE id='$idpdb'");
 	$sq -> execute();
 	$location = "location:../nuevo_examen.php?examen=".$examen."&num=".$num;
-echo $location;
+echo $sql;
 header($location);
 die();
 }
