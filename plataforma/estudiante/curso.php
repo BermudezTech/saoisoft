@@ -202,7 +202,10 @@ $profesor = $sq2 -> fetch();
 								$nota2[$u] = $notas['nota'];
 								$u++;
 							}
-							if(isset($nota2)){echo max($nota2);}
+							if ($u == 1) {
+								$nota2 = "";
+							}
+							if(isset($nota2)&&$nota2!=""){echo max($nota2);}
 						 ?></td>
 					</tr>
 					<?php

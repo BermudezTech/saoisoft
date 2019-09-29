@@ -215,7 +215,7 @@ $st5 = $conexion -> prepare("SELECT * FROM relestudianteresp WHERE estudiante='$
 ?>
 <img src="../icons/Visto_Bueno.png" width="20px" style="padding-left: 20px;"></h3><br>
 <?php
-		}else if($relestudianteresp == 2){
+		}else if($relestudianteresp['estado'] == 2){
 ?>
 <img src="../icons/exclamacion.png" width="20px" style="padding-left: 20px;" title="Necesita ser revisado por el profesor"></h3><br>
 <?php
