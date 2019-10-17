@@ -103,7 +103,7 @@ $fila = $st -> fetch();
 					<form action="validar/nuevo_padre_familia.php" method="POST" enctype="multipart/form-data">
 						<div class="span">Informacion estudiante</div><br>
 						<label>Seleccione el estudiante:</label>
-						<button onclick="seleccionar_estudiantes()" type="button" class="boton2">Seleccionar estudiante</button><input type="text" name="estudiante" id="estudiante"><br>
+						<button onclick="seleccionar_estudiantes()" type="button" class="boton2">Seleccionar estudiante</button><input type="text" name="estudiante" id="estudiante" style="display: none;"><br><br>
 						<div class="span">Informacion padre</div><br>
 						<label>Tipo de documento</label>
 						<select name="tipo_documento">

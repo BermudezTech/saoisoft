@@ -1,0 +1,201 @@
+var rules = [{
+  "name": "The default rule",
+  "url": "https://form-o-fill.github.io/tutorial/tour-1.html",
+  "fields": [{
+    "selector": "input[type=text]",
+    "value": "Welcome!"
+  }]
+}, {
+  "url": "http://localhost/plataforma/plataforma/admin/nuevo_estudiante.php",
+  "name": "A rule for http://localhost/plataforma/plataforma/admin/nuevo_estudiante.php",
+  "fields": [{
+    "selector": "#id",
+    "value": "1001185785"
+  }, {
+    "selector": "[name='nombres']",
+    "value": "Jose Eduardo"
+  }, {
+    "selector": "[name='apellidos']",
+    "value": "Bermudez Garavito"
+  }, {
+    "selector": "[name='email']",
+    "value": "jebermudez587@gmail.com"
+  }, {
+    "selector": "[name='lnacimiento']",
+    "value": "Bogota D.C."
+  }, {
+    "selector": "[name='direccion']",
+    "value": "Calle 18a Sur 29B-14"
+  }, {
+    "selector": "[name='telefono']",
+    "value": "2030946"
+  }, {
+    "selector": "#curso",
+    "value": "1"
+  }, {
+    "selector": "[onclick='passw\\(\\)']",
+    "value": false
+  }, {
+    "selector": "#pass",
+    "value": "1001185785"
+  }, {
+    "selector": "[name='fnacimiento']",
+    "value": "2003-02-24"
+  }]
+}, {
+  "url": "http://localhost/plataforma/plataforma/",
+  "name": "A rule for http://localhost/plataforma/plataforma/",
+  "fields": [{
+    "selector": "[name='username']",
+    "value": "123456789"
+  }, {
+    "selector": "[required]",
+    "value": ""
+  }, {
+    "selector": "[name='password']",
+    "value": "123456789"
+  }, {
+    "selector": "[required]",
+    "value": "123456789"
+  }, {
+    "selector": "#boton",
+    "value": "Ingresar"
+  }]
+}, {
+  "url": "http://localhost/plataforma/plataforma/admin/nuevo_profesor.php",
+  "name": "A rule for http://localhost/plataforma/plataforma/admin/nuevo_profesor.php",
+  "fields": [{
+    "selector": "#id",
+    "value": "889889889"
+  }, {
+    "selector": "[name='nombres']",
+    "value": "Daniel"
+  }, {
+    "selector": "[name='apellidos']",
+    "value": "Ochoa"
+  }, {
+    "selector": "[name='email']",
+    "value": "dochoa8b9@gmail.com"
+  }, {
+    "selector": "[name='lnacimiento']",
+    "value": "Bogota D.C."
+  }, {
+    "selector": "[name='direccion']",
+    "value": "Calle 24 a 29-15"
+  }, {
+    "selector": "[name='telefono']",
+    "value": "2039586"
+  }, {
+    "selector": "[onclick='passw\\(\\)']",
+    "value": false
+  }, {
+    "selector": "#pass",
+    "value": "889889889"
+  }, {
+    "selector": "[name='fnacimiento']",
+    "value": "1982-10-10"
+  }, {
+    "selector": "[name='tipo_documento']",
+    "value": "CC"
+  }]
+}, {
+  "url": "http://localhost/plataforma/plataforma/admin/nueva_materia.php",
+  "name": "A rule for http://localhost/plataforma/plataforma/admin/nueva_materia.php",
+  "fields": [{
+    "selector": "[name='nombre1']",
+    "value": "Ingles"
+  }]
+}, {
+  "url": "http://localhost/plataforma/plataforma/admin/nuevo_curso.php",
+  "name": "A rule for http://localhost/plataforma/plataforma/admin/nuevo_curso.php",
+  "fields": [{
+    "selector": "#nombre",
+    "value": ""
+  }, {
+    "selector": "[onchange='myFunction\\(\\)']",
+    "value": "11"
+  }, {
+    "selector": "#nombre",
+    "value": "Once A"
+  }, {
+    "selector": ".button-submit-green",
+    "value": "Guardar"
+  }]
+}, {
+  "url": "http://localhost/plataforma/plataforma/admin/nuevo_padre_familia.php",
+  "name": "A rule for http://localhost/plataforma/plataforma/admin/nuevo_padre_familia.php",
+  "fields": [{
+    "selector": "#estudiante",
+    "value": "1001185785"
+  }, {
+    "selector": "#id",
+    "value": "19385504"
+  }, {
+    "selector": "[name='nombres']",
+    "value": "Jose"
+  }, {
+    "selector": "[name='apellidos']",
+    "value": "Bermudez García"
+  }, {
+    "selector": "[name='email']",
+    "value": "padrefamilia@gmail.com"
+  }, {
+    "selector": "[name='lnacimiento']",
+    "value": "Bogota D.C."
+  }, {
+    "selector": "[name='direccion']",
+    "value": "Calle 18a Sur 29B-14"
+  }, {
+    "selector": "[name='telefono']",
+    "value": "2030946"
+  }, {
+    "selector": "#idM",
+    "value": "52167618"
+  }, {
+    "selector": "[name='nombresM']",
+    "value": "Ana Beatriz"
+  }, {
+    "selector": "[name='apellidosM']",
+    "value": "Garavito Garavito"
+  }, {
+    "selector": "[name='emailM']",
+    "value": "begaravito3@gmail.com"
+  }, {
+    "selector": "[name='lnacimientoM']",
+    "value": "Bogota D.C."
+  }, {
+    "selector": "[name='direccionM']",
+    "value": "Calle 18a Sur 29B-14"
+  }, {
+    "selector": "[name='telefonoM']",
+    "value": "2030946"
+  }, {
+    "selector": "[onclick='passw\\(\\)']",
+    "value": true
+  }, {
+    "selector": "[onclick='passwM\\(\\)']",
+    "value": true
+  }, {
+    "selector": "#pass",
+    "value": "19385504"
+  }, {
+    "selector": "#passM",
+    "value": "52167618"
+  }, {
+    "selector": "[name='fnacimiento']",
+    "value": "1959-12-16"
+  }, {
+    "selector": "[name='fnacimientoM']",
+    "value": "1969-09-26"
+  }, {
+    "selector": ".boton2",
+    "value": ""
+  }, {
+    "selector": "[name='tipo_documento']",
+    "value": "CC"
+  }, {
+    "selector": "[name='tipo_documentoM']",
+    "value": "CC"
+  }]
+}
+];

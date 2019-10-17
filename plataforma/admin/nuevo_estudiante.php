@@ -129,7 +129,7 @@ $fila = $st -> fetch();
 						<label>Coloque el telefono del estudiante</label>
 						<input type="text" name="telefono">
 						<label>Seleccione el curso del estudiante:</label>
-						<button onclick="seleccionar_cursos2()" type="button" class="boton2">Seleccionar curso</button><input type="text" name="curso" id="curso"><br>
+						<button onclick="seleccionar_cursos2()" type="button" class="boton2">Seleccionar curso</button><input type="text" name="curso" id="curso" style="display: none;"><br><br>
 						<label>Coloque la foto del estudiante</label>
 						<input type="file" name="foto" id="foto" style="padding-bottom: 30px;">
 						<div id="imagePreview2" style="margin-bottom: 60px; margin-top: 40px;"></div>

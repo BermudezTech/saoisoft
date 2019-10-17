@@ -32,8 +32,13 @@ mkdir($carpeta2);
 $carpeta3 = $folder ."/multimedia";
 mkdir($carpeta3);
 mkdir($carpeta_destino);
+if ($_FILES['foto']['tmp_name'] != "") {
+	# code...
 move_uploaded_file($_FILES['foto_admin']['tmp_name'], $carpeta_destino."/".$id.".jpg");
 $foto_admin = "usuarios/fotos/".$id.".jpg";
+}else{
+	$foto_admin = "setup/default.jpg";
+}
 
 include 'colortable.php';
 $sql = "INSERT INTO datos_institucion(escudo, nombre, color1, color2, color3, email, telefono) VALUES ('$escudo', '$nombre', '$color1', '$color2', '$color3', '$email_ins', '$telefono_ins')";

@@ -14,12 +14,19 @@ $direccion = $_POST['direccion'];
 $telefono = $_POST['telefono'];
 $tipo_documento = $_POST['tipo_documento'];
 $cargarFoto = $_FILES['foto']['tmp_name'];
-$curso = $_POST['curso'];
+	$curso = $_POST['curso'];
+if ($_FILES['foto']['tmp_name'] != "") {
+	# code...
+
 
 $folder = "../../usuarios/fotos";
 $carpeta_destino =$folder;
 move_uploaded_file($_FILES['foto']['tmp_name'], $carpeta_destino."/".$id.".jpg");
 $foto_user = "usuarios/fotos/".$id.".jpg";
+}else{
+	$foto_user = "setup/default.jpg";
+}
+
 $query = "INSERT INTO usuario (id,nombres,apellidos,email,tipo_usuario,pass,lugar_nacimiento,fecha_nacimiento, direccion, telefono, foto, tipo_documento) VALUES ($id,'$nombres','$apellidos', '$email', 1, '$pass', '$lnacimiento', '$fnacimiento', '$direccion', '$telefono', '$foto_user', '$tipo_documento')";
 echo $query;
 $st = $conexion -> prepare($query);

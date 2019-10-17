@@ -131,9 +131,9 @@ $fila = $st -> fetch();
 					<form action="validar/materia_profesor.php" method="POST" enctype="multipart/form-data">
 						<div class="span">Informacion materia-profesor</div><br>
 						<label>Seleccione la materia:</label>
-						<button onclick="seleccionar_curso()" type="button" class="boton2">Seleccionar materia</button><input type="text" name="cursos" id="cursos"><br>
+						<button onclick="seleccionar_curso()" type="button" class="boton2">Seleccionar materia</button><input type="text" name="cursos" id="cursos" style="display: none;"><br><br>
 						<label>Seleccione el profesor:</label>
-						<button onclick="seleccionar_profesor()" type="button" class="boton2">Seleccionar profesor</button><input type="text" name="profesor" id="profesor"><br>
+						<button onclick="seleccionar_profesor()" type="button" class="boton2">Seleccionar profesor</button><input type="text" name="profesor" id="profesor" style="display: none;"><br><br>
 						<input type="submit" value="Guardar" class="button-submit-green">
 					</form>
 				</div>				
