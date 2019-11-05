@@ -58,8 +58,29 @@ $fila = $st -> fetch();
  		<div class="main">
  			<?php echo $fila['main']; ?>
  		</div>
+ 		<style>
+ 			.footer{
+ 				width: 100%;
+ 				height: 40px;
+ 				background-color: #767676;
+ 				color: #ffffff;
+ 				position: fixed;
+ 				bottom: 0px;
+ 				left: 0px;
+ 				display: flex;
+ 				padding: 10px;
+ 				box-sizing: border-box;
+ 				justify-content: space-between;
+ 				align-items: center;
+ 			}
+ 			a{
+ 				color: #ffffff;
+ 				text-decoration: none;
+ 			}
+ 		</style>
  		<div class="footer">
- 			
+ 			<div>Diseñado por SAOI-Soft Company® - 2019</div>
+ 			<div><a href="Terminos y condiciones.pdf">Terminos y condiciones</a></div>
  		</div>
  	</div>
  	</form>

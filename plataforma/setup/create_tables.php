@@ -24,7 +24,7 @@ CREATE TABLE exam(id int AUTO_INCREMENT, nombre varchar(255), curso int,fecha DA
 CREATE TABLE question(id int AUTO_INCREMENT, pregunta varchar(1000), examen int, tipo int, PRIMARY KEY(id), FOREIGN KEY(examen) REFERENCES exam(id));
 CREATE TABLE answer(id int AUTO_INCREMENT, respuesta varchar(1000), question int, estado int, PRIMARY KEY(id), FOREIGN KEY(question) REFERENCES question(id));
 CREATE TABLE examscores(id int AUTO_INCREMENT, estudiante int, nota float, examen int, PRIMARY KEY(id), FOREIGN KEY(estudiante) REFERENCES usuario(id), FOREIGN KEY (examen) REFERENCES exam(id));
-CREATE TABLE relestudianteresp(id int AUTO_INCREMENT, pregunta int, respuestaa varchar(1000), respuestac int, estudiante int, estado int, PRIMARY KEY(id), FOREIGN KEY (pregunta) REFERENCES question(id), FOREIGN KEY(respuestac) REFERENCES answer(id), FOREIGN KEY(estudiante) REFERENCES usuario(id));
+CREATE TABLE relestudianteresp(id int AUTO_INCREMENT, pregunta int, respuestaa varchar(1000), respuestac int, estudiante int, estado int, intento int, PRIMARY KEY(id), FOREIGN KEY (pregunta) REFERENCES question(id), FOREIGN KEY(respuestac) REFERENCES answer(id), FOREIGN KEY(estudiante) REFERENCES usuario(id));
 ");
 $stm -> execute();
 if ($stm) {

@@ -208,7 +208,8 @@ foreach ($numeros as $numero) {
 <h3><?php echo $c ?>. <?php echo $preguntas[$numero] ?>
 <?php
 $preguntaidd = $preguntaid[$numero];
-$st5 = $conexion -> prepare("SELECT * FROM relestudianteresp WHERE estudiante='$estudiante' && pregunta='$preguntaidd' ORDER BY id DESC");
+$sql = "SELECT * FROM relestudianteresp WHERE estudiante='$estudiante' && pregunta='$preguntaidd' ORDER BY id DESC";
+$st5 = $conexion -> prepare($sql);
 		$st5 -> execute();
 		$relestudianteresp = $st5 -> fetch();
 		if ($relestudianteresp['estado']==1) {

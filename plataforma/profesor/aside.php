@@ -5,6 +5,7 @@
 				<button onclick="perfil()"><i class="icon-profile"></i> Mi perfil</button>
 				<button onclick="mi_info()"><i class="icon-info"></i> Modificar mi informacion</button>
 				<button onclick="changepass()"><i class="icon-key"></i> Cambiar mi contraseña</button>
+				<button onclick="location.href = 'Manual de usuario.pdf'"><i class="icon-manual"></i> Manual de usuario</button>
 				<hr>
 				<h4>Funciones</h4>
 				<button onclick="clases()"><i class="icon-toga"></i> Mis clases</button>

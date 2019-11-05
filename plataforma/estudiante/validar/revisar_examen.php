@@ -36,11 +36,14 @@ $st -> execute();
 while ($preguntas = $st -> fetch()) {
 	$preguntaid = $preguntas['id'];
 	$respuestaid = $_POST[$preguntaid];
+	//echo $preguntaid;
+	//die();
 	if ($preguntas['tipo'] == 2) {
 		$st2 = $conexion -> prepare("SELECT * FROM answer WHERE id='$respuestaid'");
 		$st2 -> execute();
 		$respuesta = $st2 -> fetch();
 		$estado = 0;
+		
 		if ($respuesta['estado'] == 1) {
 			$finalscore = $finalscore + $scoreperquestion;
 			$estado = 1;
