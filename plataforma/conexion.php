@@ -1,4 +1,4 @@
-<?php 
-		$conexion=new PDO('mysql:host=localhost;dbname=saoisoft','root','');
-		$conexion->exec('set names utf8');
-		?>
+<?php
+
+$conexion = new PDO('mysql:host=db;dbname=saoisoft', 'root', 'password');
+$conexion->exec('set names utf8');
