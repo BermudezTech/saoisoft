@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 session_start();
 include 'permisos_admin.php';
 include '../conexion.php';
