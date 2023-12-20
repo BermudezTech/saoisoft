@@ -1,3 +1,8 @@
+<?php
+ob_start();
+session_start();
+?>
+
 <style type="text/css">
 	a {
 		text-decoration: none;

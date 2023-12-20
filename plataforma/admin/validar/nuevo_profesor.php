@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 
 include '../../conexion.php';
 
@@ -17,20 +18,18 @@ $cargarFoto = $_FILES['foto']['tmp_name'];
 $curso = $_POST['curso'];
 
 if ($_FILES['foto']['tmp_name'] != "") {
-	# code...
-	$curso = $_POST['curso'];
+    # code...
+    $curso = $_POST['curso'];
 
-$folder = "../../usuarios/fotos";
-$carpeta_destino =$folder;
-move_uploaded_file($_FILES['foto']['tmp_name'], $carpeta_destino."/".$id.".jpg");
-$foto_user = "usuarios/fotos/".$id.".jpg";
-}else{
-	$foto_user = "setup/default.jpg";
+    $folder = "../../usuarios/fotos";
+    $carpeta_destino = $folder;
+    move_uploaded_file($_FILES['foto']['tmp_name'], $carpeta_destino . "/" . $id . ".jpg");
+    $foto_user = "usuarios/fotos/" . $id . ".jpg";
+} else {
+    $foto_user = "setup/default.jpg";
 }
 $query = "INSERT INTO usuario (id,nombres,apellidos,email,tipo_usuario,pass,lugar_nacimiento,fecha_nacimiento, direccion, telefono, foto, tipo_documento) VALUES ($id,'$nombres','$apellidos', '$email', 2, '$pass', '$lnacimiento', '$fnacimiento', '$direccion', '$telefono', '$foto_user', '$tipo_documento')";
 echo $query;
 $st = $conexion -> prepare($query);
 $st->execute();
-header('Location: ../');
-
- ?>
+echo '<meta http-equiv="refresh" content="0; url=../">';
